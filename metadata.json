@@ -2,14 +2,15 @@
   "name": "lenovo-cnospuppet",
   "version": "0.1.0",
   "author": "lenovo",
-  "summary": "Lenovo Puppet providers and types for CNOS devices",
+  "summary": "Module to manage and configure Lenovo CNOS devices",
   "license": "BSD-3-Clause",
   "source": "https://github.com/lenovo/puppet-cnos",
   "project_page": "https://github.com/lenovo/puppet-cnos",
   "issues_url": "https://github.com/lenovo/puppet-cnos/issues",
   "dependencies": [
-    
-  ],
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+],
+  "data_provider": null
   "requirements": [
     {
       "name": "puppet",
