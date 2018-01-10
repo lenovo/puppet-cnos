@@ -10,7 +10,7 @@
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
 ],
-  "data_provider": null
+  "data_provider": null,
   "requirements": [
     {
       "name": "puppet",
@@ -31,7 +31,7 @@
         "2012 R2",
         "10"
       ]
-    }
+    },
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
