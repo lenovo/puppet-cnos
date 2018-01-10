@@ -1,4 +1,13 @@
-source ENV['GEM_SOURCE'] || 'https://rubygems.org'
+# Copyright (c) 2017, Lenovo. All rights reserved.
+#
+# This program and the accompanying materials are licensed and made available
+# under the terms and conditions of the 3-clause BSD License that accompanies 
+# this distribution. The full text of the license may be found at
+
+# https://opensource.org/licenses/BSD-3-Clause
+
+# THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS, WITHOUT
+# WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
 puppetversion = ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'] : ['>= 3.3']
 gem 'metadata-json-lint'
