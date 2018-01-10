@@ -1,16 +1,13 @@
+# Copyright (c) 2017, Lenovo. All rights reserved.
 #
-# Copyright (C) 2017 Lenovo, Inc.
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#       http://www.apache.org/licenses/LICENSE-2.0
+# This program and the accompanying materials are licensed and made available
+# under the terms and conditions of the 3-clause BSD License that accompanies 
+# this distribution. The full text of the license may be found at
 #
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# https://opensource.org/licenses/BSD-3-Clause
 #
+# THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS, WITHOUT
+# WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
 Puppet::Type.newtype(:cnos_vlag) do
   desc ' = {
