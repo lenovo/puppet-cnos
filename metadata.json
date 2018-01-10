@@ -24,12 +24,6 @@
       ]
     },
     {
-      "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [
-        "16.04"
-      ]
-    },
-    {
       "operatingsystem": "windows",
       "operatingsystemrelease": [
         "2008 R2",
