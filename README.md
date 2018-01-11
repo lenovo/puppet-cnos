@@ -89,4 +89,4 @@ Unit test tools such as spec can also be used to test types and providers
 * Lenovo DCG Networking, Lenovo
 
 ## License
-Apache 2.0, See LICENSE file
+BSD-3-Clause, See LICENSE file
