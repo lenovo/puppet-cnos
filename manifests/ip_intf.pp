@@ -9,13 +9,15 @@
 # THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS, WITHOUT
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
-cnos_ip_intf{'Ethernet1/1':
-   ensure => 'present', 
-   ip_addr => "1.1.1.1",
-   bridge_port => "no",
-   if_name => "Ethernet1/1",
-   mtu => 1502,
-   vrf_name => "default",
-   admin_state => "up",
-   ip_prefix_len => 24
+class cnos::ip_intf {
+  cnos_ip_intf{'Ethernet1/11':
+    ensure        => present,
+    ip_addr       => '1.1.1.1',
+    bridge_port   => 'no',
+    if_name       => 'Ethernet1/11',
+    mtu           => 1502,
+    vrf_name      => 'default',
+    admin_state   => 'up',
+    ip_prefix_len => 24
+  }
 }

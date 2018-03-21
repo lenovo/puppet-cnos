@@ -9,6 +9,8 @@
 # THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS, WITHOUT
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
-cnos_arp{'Ethernet1/1':
-ageout_time => 80,
+class cnos::arp {
+  cnos_arp{'Ethernet1/1':
+    ageout_time => 80,
+  }
 }

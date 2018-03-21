@@ -1,7 +1,7 @@
 # Copyright (c) 2017, Lenovo. All rights reserved.
 #
 # This program and the accompanying materials are licensed and made available
-# under the terms and conditions of the 3-clause BSD License that accompanies 
+# under the terms and conditions of the 3-clause BSD License that accompanies
 # this distribution. The full text of the license may be found at
 #
 # https://opensource.org/licenses/BSD-3-Clause
@@ -11,32 +11,35 @@
 
 Puppet::Type.newtype(:cnos_vlan) do
   desc ' = {
- 	    Manage Vlans on Lenovo cnos.
-
- 	    Example:
- 	     cnos_vlan {1:
-		     vlan_name => vlan1,
-		     admin_state => up,
+            Manage Vlans on Lenovo cnos.
+            Example:
+             cnos_vlan {1:
+                     vlan_name => vlan1,
+                     admin_state => up,
               }
            }'
+  apply_to_device
   ensurable
 
   # Parameters
-  newparam(:vlan_id, namevar: true) do
-    desc 'vlan_id an integer from 2-3999'
+  newparam(:name, namevar: true) do
+    desc 'Name of VLAN.'
 
-=begin    munge do |value|
-      value.to_i
-    end
-=end
     validate do |value|
-      unless value.to_i.between?(1, 3999)
-        fail "value not within limit (2-3999)"
-      end
+      super value
+      raise('the name must be between 1 and 64 characters long') if value.size > 64
     end
   end
 
   # Properties
+  newproperty(:vlan_id) do
+    desc 'vlan_id an integer from 1-3999'
+
+    validate do |value|
+      raise 'value not within limit (2-3999)' unless value.to_i.between?(1, 3999)
+    end
+  end
+
   newproperty(:vlan_name) do
     desc 'string 32 characters long'
   end

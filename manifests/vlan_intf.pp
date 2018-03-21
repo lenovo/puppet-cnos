@@ -9,8 +9,11 @@
 # THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS, WITHOUT
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
-cnos_vlan_intf { 'Ethernet1/92':
-#ensure => 'present',
-bridgeport_mode => 'trunk',
-pvid => 1,
-vlans => [10],}
+class cnos::vlan_intf {
+  cnos_vlan_intf { 'Ethernet1/92':
+    ensure          => 'present',
+    bridgeport_mode => 'trunk',
+    pvid            => 1,
+    vlans           => [10],
+  }
+}

@@ -9,6 +9,8 @@
 # THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS, WITHOUT
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
-cnos_lacp {'sys_prio':
-sys_prio => '32769',
+class cnos::lacp {
+  cnos_lacp {'sys_prio':
+    sys_prio => '32769',
+  }
 }

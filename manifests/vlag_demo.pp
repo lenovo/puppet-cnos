@@ -9,20 +9,22 @@
 # THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS, WITHOUT
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
-cnos_vlag_conf{'vlag_conf':
-tier_id => 10,
-ensure => present
+class cnos::vlag_demo {
+  cnos_vlag_conf{'vlag_conf':
+    ensure  => present,
+    tier_id => 10,
+  }
+  cnos_vlag_isl {'vlag_isl':
+    port_aggregator => 100,
+  }
+  cnos_vlag { '1':
+    ensure          => present,
+    status          => 'enable',
+    port_aggregator => 10,
+  }
+  cnos_vlag { '2':
+    ensure          => present,
+    status          => 'enable',
+    port_aggregator => 20,
+  }
 }
-cnos_vlag_isl {'vlag_isl':
-port_aggregator => 100
-}
-
-cnos_vlag { '1':
-ensure => 'present',
-status => 'enable',
-port_aggregator => 10,}
-
-cnos_vlag { '2':
-ensure => 'present',
-status => 'enable',
-port_aggregator => 20,}

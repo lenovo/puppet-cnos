@@ -1,7 +1,7 @@
 # Copyright (c) 2017, Lenovo. All rights reserved.
 #
 # This program and the accompanying materials are licensed and made available
-# under the terms and conditions of the 3-clause BSD License that accompanies 
+# under the terms and conditions of the 3-clause BSD License that accompanies
 # this distribution. The full text of the license may be found at
 #
 # https://opensource.org/licenses/BSD-3-Clause
@@ -19,6 +19,9 @@ Puppet::Type.newtype(:cnos_lacp) do
               }
            }'
 
+  apply_to_device
+  ensurable
+
   # Parameters
   newparam(:title, namevar: true) do
     desc 'name of parameter'
@@ -31,7 +34,7 @@ Puppet::Type.newtype(:cnos_lacp) do
     munge(&:to_i)
 
     validate do |value|
-      unless value.to_i.between?(1, 65535)
+      unless value.to_i.between?(1, 65_535)
         raise 'value not within limit (1-65535)'
       end
     end

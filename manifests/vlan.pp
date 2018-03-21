@@ -9,7 +9,10 @@
 # THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS, WITHOUT
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
-cnos_vlan { '11':
-ensure => 'present',
-admin_state => 'down',
-vlan_name => 'test11',}
+class cnos::vlan {
+  cnos_vlan { '11':
+    ensure      => 'present',
+    admin_state => 'down',
+    vlan_name   => 'test11',
+  }
+}

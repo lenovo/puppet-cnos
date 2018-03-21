@@ -9,6 +9,8 @@
 # THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS, WITHOUT
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
-cnos_vlag_isl {'vlag_isl':
-port_aggregator => 10
+class cnos::vlag_isl {
+  cnos_vlag_isl {'vlag_isl':
+    port_aggregator => 10
+  }
 }

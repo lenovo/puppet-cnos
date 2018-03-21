@@ -9,6 +9,8 @@
 # THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS, WITHOUT
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
-cnos_arp_sys{"arp_sys":
-ageout_time => 1000
+class cnos::arp_sys {
+  cnos_arp_sys{'arp_sys':
+    ageout_time => 1000
+  }
 }
