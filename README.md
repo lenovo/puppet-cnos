@@ -13,25 +13,25 @@
 
 ## Module description
 
-This module uses REST to manage various Network management aspects of Lenovo CNOS Switches and acts as a foundation for building higher level abstractions within Puppet. The cnos module provides a set of types and providers for managing Lenovo CNOS switches. The module provides resources for the VLAN provisioning, Vlag provisioning, Arp, Telemetry, LAG, LACP, IP-Interface Mapping, VLAN-Port Mapping etc . The module allows you to manage CNOS Switches deployed in a network, in order to manage much of your CNOS configuration through Puppet.
+This module uses REST to manage various Network management features of Switches running Lenovo CNOS and acts as a foundation for building higher level abstractions within Puppet. The CNOS module provides a set of types, providers and resources for managing Lenovo CNOS switches. These include resources for VLAN provisioning, VLAG, ARP, Telemetry, LAG, LACP, IP-Interface Mapping, VLAN-Port Mapping etc.
 
 
 ## Setup
 
-### Beginning with cnos in puppet
+### Beginning with CNOS Module in puppet
 
 Before you can use the CNOS module, you must create a proxy system able to run puppet device. Your Puppet agent will serve as the "proxy system" for the puppet device subcommand.
 
 Create a device.conf file in the Puppet conf directory (either /etc/puppet or /etc/puppetlabs/puppet) on the Puppet agent. Within your device.conf, you must have:
 
 ~~~
-[cnos.switch.labs.lenovo.com]
+[<FQDN of Switch>]
 type cnos
 url https://<USERNAME>:<PASSWORD>@<IP ADDRESS OF CNOS Switch>/
 ~~~
 
-In the above example, `<USERNAME>` and `<PASSWORD>` refer to Puppet's login for the device. And cnos.switch.labs.lenovo.com is the domain name of the switch 
-
+In the above example, `<USERNAME>` and `<PASSWORD>` refer to Puppet's login for the device. And <FQDN of Switch> is the Fully Qualified Domain Name of the switch 
+Make sure the Switch is reachable by its FQDN from the Master and Agent instance
 Additionally, you must install the lenovo-rbapi gem into the Puppet Ruby environment on the proxy host (Puppet agent) by declaring the cnos-rbapi class on that host. If you do not install the lenovo-rbapi gem, version 0.0.5, the module will not work.
 
 ## Usage
@@ -48,20 +48,16 @@ The following pre-existing infrastructure is required for the use of cnos module
 
 ### Steps
 
-1.  Classify the CNOS device with the required resource types.
-2.  Apply classification to the device from the proxy or controller by running `puppet device -v --user=root`.
+1.  Update the manifest file under /etc/puppetlabs/code/environment/production/modules/cnos/manifests/<feature>.pp and Run Apply to refresh catalog
+2.  Classify the CNOS device with the required resource types from PE console
+3.  Apply classification to the device from the proxy node by running `puppet device -v --user=root`.
 
 See below for the detailed steps.
 
 #### Step One: Classifying your servers
 
-   In case, you have installed the puppet master in server with domain name, say, server.labs.lenovo.com, then you will be able to access the UI of puppet master with the following URL.
-https://server.labs.lenovo.com/
-This will prompt you for a username and password which u have set up during the master installation. On successful login you will be lead to Overview page. On the right handside you will be able to find menu item for Classification under Configure section. Click on that. In case your CNOS installation has gone successfully you will be able to find your CNOS Module under "All Nodes"
-
-Click on the CNOS Nodes and your will be reach a page where the default tab is Rules. In the page u should be able to find the the nodes pinned to this group. You will be able to find the node u added to the puppet device in this section, if not u have to run the puppet device command to generate certificate and add your device to this classification. 
-
-Click on the Configuration tab and click on Add new class text area to list all the classes available for your to execute onto a switch. If you cannot find the classes starting with cnos:: then your manifests are not listing your which means your installation of cnos module is not successful.
+Open Puppet Enterprise (PE) Console using https://<FQDN of Puppet Master>/ and enter credentials created during Puppet Enterprise Installation
+Click on Classification under Configure section and select the Configuration Class and Switches
 
 #### Step Two: Run puppet device
 
