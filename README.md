@@ -172,7 +172,7 @@ class cnos::ip_intf {
 }
 ```
 
-### cnos::cnos::lacp
+### cnos::lacp
 
 Handles Lacp on Lenovo CNOS
 For details regarding parameters, please refer to [cnos_lacp](#cnos_lacp).
@@ -186,7 +186,7 @@ class cnos::lacp {
 }
 ```
 
-### cnos::cnos::lag
+### cnos::lag
 
 Handles lag on Lenovo CNOS
 For details regarding parameters, please refer to [cnos_lag](#cnos_lag).
@@ -207,7 +207,7 @@ class cnos::lag {
 }
 ```
 
-### cnos::cnos::sys
+### cnos::sys
 
 Handles Telemetry System properties on Lenovo CNOS
 For details regarding parameters, please refer to [cnos_sys](#cnos_sys).
@@ -223,7 +223,7 @@ class cnos::sys {
 }
 ```
 
-### cnos::cnos::vlag_health
+### cnos::vlag_health
 
 Handles Vlag_health on Lenovo CNOS
 For details regarding parameters, please refer to [cnos_vlag_health](#cnos_vlag_health).
@@ -241,7 +241,7 @@ class cnos::vlag_health {
 
 ```
 
-### cnos::cnos::vlag_isl
+### cnos::vlag_isl
 
 Handles vlag isl on Lenovo cnos
 For details regarding parameters, please refer to [cnos_vlag_isl](#cnos_vlag_isl).
@@ -256,7 +256,7 @@ class cnos::vlag_isl {
 
 ```
 
-### cnos::cnos::vlag
+### cnos::vlag
 
 Handles Vlags on Lenovo cnos.
 For details regarding parameters, please refer to [cnos_vlag](#cnos_vlag).
@@ -273,7 +273,7 @@ class cnos::vlag {
 
 ```
 
-### cnos::cnos::vlan_intf
+### cnos::vlan_intf
 
 Handles Vlan -Interface mapping on Lenovo cnos.
 For details regarding parameters, please refer to [cnos_vlan_intf](#cnos_vlan_intf).
@@ -290,7 +290,7 @@ class cnos::vlan_intf {
 }
 ```
 
-### cnos::cnos::vlan
+### cnos::vlan
 
 Handles VLAN on Lenovo cnos.
 For details regarding parameters, please refer to [cnos_vlan](#cnos_vlan).
@@ -307,7 +307,7 @@ class cnos::vlan {
 
 ```
 
-### cnos::cnos::vrrp
+### cnos::vrrp
 
 Handles Vrrp on Lenovo cnos.
 
