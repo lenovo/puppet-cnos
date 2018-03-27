@@ -31,19 +31,28 @@ Puppet::Type.newtype(:cnos_vrrp) do
   ensurable
 
   # Parameters
-  newparam(:vr_id, namevar: true) do
+  newparam(:name, namevar: true) do
+    desc 'inst_id + interface as String'
+
+    validate do |value|
+      super value
+      raise('the name must be between 1 and 64 characters long') if value.size > 64
+    end
+  end
+
+  # Properties
+  newproperty(:vr_id, namevar: true) do
     desc 'inst_id an integer from 1-255'
 
     validate do |value|
       raise 'value not within limit (1-255)' unless value.to_i.between?(1, 255)
     end
   end
-
-  newparam(:if_name) do
+  
+  newproperty(:if_name) do
     desc 'Interface name'
   end
 
-  # Properties
   newproperty(:ip_addr) do
     desc 'string 32 characters long'
   end
@@ -74,7 +83,6 @@ Puppet::Type.newtype(:cnos_vrrp) do
 
   newproperty(:admin_state) do
     desc 'one of up or down'
-    # newvalues('up', 'down')
   end
 
   newproperty(:track_if) do
@@ -88,7 +96,6 @@ Puppet::Type.newtype(:cnos_vrrp) do
 
   newproperty(:v2_compt) do
     desc 'one of yes, no'
-    # newvalues('yes', 'no')
   end
 
   newproperty(:switch_back_delay) do
