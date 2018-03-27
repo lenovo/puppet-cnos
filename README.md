@@ -58,8 +58,9 @@ puppet module install lenovo-cnos
 #### Step Two: Install CNOS and Rest-Client gems on Puppet Agent
 
 To install the gem files on Puppet Agent
-
+ 
 /opt/puppetlabs/puppet/bin/gem install rest-client
+
 /opt/puppetlabs/puppet/bin/gem install lenovo-rbapi -v 0.0.5
 
 
