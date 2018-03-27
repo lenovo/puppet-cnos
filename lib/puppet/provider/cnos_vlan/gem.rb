@@ -77,7 +77,7 @@ Puppet::Type.type(:cnos_vlan).provide(:gem, parent: Puppet::Provider::Cnos) do
   end
 
   def destroy
-    Puppet.debug('I am inside destroy' + :vlan_id.to_s)
+    Puppet.debug('I am inside destroy' + resource[:vlan_id].to_s)
     resp = Puppet::Provider::Cnos.delete_vlan(resource[:vlan_id].to_i)
     @property_hash.clear
   end
