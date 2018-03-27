@@ -16,15 +16,11 @@ require 'json'
 Puppet::Type.type(:cnos_vlan_intf).provide(:gem, parent: Puppet::Provider::Cnos) do
   desc 'Manage Vlan on Lenovo CNOS. Requires cnos-rbapi'
 
-  # confine operatingsystem: [:ubuntu]
-
   mk_resource_methods
 
   def self.instances
     Puppet.debug('I am inside instances')
     instances = []
-    # conn = Connect.new('./config.yml')
-    # resp = VlanIntf.get_all_vlan_intf(conn)
     resp = Puppet::Provider::Cnos.get_all_vlan_intf
     return 'no vlans' unless resp
     resp.each do |item|
@@ -72,9 +68,7 @@ Puppet::Type.type(:cnos_vlan_intf).provide(:gem, parent: Puppet::Provider::Cnos)
   def flush
     Puppet.debug('I am inside flush')
     if @property_hash != {}
-      # conn = Connect.new('./config.yml')
       params = params_setup
-      # resp = VlanIntf.update_vlan_intf(conn, resource[:if_name], params)
       resp = Puppet::Provider::Cnos.update_vlan_intf(resource[:if_name], params)
     end
     @property_hash = resource.to_hash
