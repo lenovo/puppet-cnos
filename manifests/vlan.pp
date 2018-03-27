@@ -18,10 +18,10 @@
 # @example Declaring the class
 #   include cnos_vlan
 #
-# @param [String] Vlan id of the Vlan.
-# @property [Integer] Vlan id of the Vlan.
-# @property [String] Admin state of this vlan.
-# @property [String] Name of this vlan.
+# @param [String] name Vlan id of the Vlan.
+# @property [Integer] vlan_id Vlan id of the Vlan.
+# @property [String] admin_state Admin state of this vlan.
+# @property [String] vlan_name Name of this vlan.
 
 class cnos::vlan {
   cnos_vlan { '11':
