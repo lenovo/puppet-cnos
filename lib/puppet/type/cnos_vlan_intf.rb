@@ -25,11 +25,14 @@ Puppet::Type.newtype(:cnos_vlan_intf) do
   apply_to_device
 
   # Parameters
-  newparam(:if_name, namevar: true) do
+  newparam(:name, namevar: true) do
     desc 'Ethernet interface name'
   end
 
   # Properties
+  newparam(:if_name) do
+    desc 'Ethernet interface name'
+  end
   newproperty(:bridgeport_mode) do
     newvalues(:access, :trunk)
     desc 'one of access/trunk'
