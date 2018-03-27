@@ -7,10 +7,7 @@ class Puppet::Util::NetworkDevice::Transport::Cnos < Puppet::Util::NetworkDevice
 
   def initialize(url, _options = {})
     Puppet.debug("url = #{url}")
-    # require 'faraday'
 
-    # @connection = Faraday.new(url: url, ssl: { verify: false })
-    # @connection.basic_auth("admin", "admin")
     require 'cnos-rbapi'
     array = url.split(/:/)
     transport = array[0]
@@ -33,21 +30,14 @@ class Puppet::Util::NetworkDevice::Transport::Cnos < Puppet::Util::NetworkDevice
     params['ip'] = switchIP
     params['user'] = username
     params['password'] = password
-    # params = {"transport" => "https", "port" => 443, "ip" => "10.241.107.39", "user" => "admin", "password" => "admin"}
-    # @connection = Connect.new(params: params, ssl:{ verify: false })
     @connection = Connect.new(params)
   end
 
   def call(url, args = {})
-    # Puppet.debug("connection = #{connection.inspect}")
-    # result = connection.get(url, args)
-    # JSON.parse(result.body)
-    # Puppet.debug("result = #{result.inspect}")
     begin
       Puppet.debug("connection = #{@connection.inspect}")
       result = @connection.getFacts(url, args)
       Puppet.debug("result  = #{result}")
-      # JSON.parse(result.body)
       response = JSON.parse(result)
       Puppet.debug("response  = #{response}")
       Puppet.debug("result = #{result.inspect}")
@@ -57,7 +47,6 @@ class Puppet::Util::NetworkDevice::Transport::Cnos < Puppet::Util::NetworkDevice
       Puppet.debug("Backtrace = #{e.backtrace.inspect}")
     end
   rescue JSON::ParserError
-    # This should be better at handling errors
     return nil
   end
 
