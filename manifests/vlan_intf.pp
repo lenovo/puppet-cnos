@@ -19,11 +19,11 @@
 # @example Declaring the class
 #   include cnos_vlan_intf
 #
-# @param [String] Ethernet interface name.
-# @property if_name [String] Ethernet interface name.
-# @property bridgeport_mode [String] Bridge Port mode has to be either 'access' or trunk.
-# @property pvid [Integer] The Native VLAN ID for switch ports.
-# @property vlans [Array] It has to be an array of vlan id or the string 'all' or 'none'.
+# @param [String] name Ethernet interface name.
+# @property [String] if_name Ethernet interface name.
+# @property [String] bridgeport_mode Bridge Port mode has to be either 'access' or trunk.
+# @property [Integer] pvid The Native VLAN ID for switch ports.
+# @property [Array] vlans It has to be an array of vlan id or the string 'all' or 'none'.
 
 class cnos::vlan_intf {
   cnos_vlan_intf { 'Ethernet1/92':
