@@ -96,30 +96,4 @@ class Puppet::Util::NetworkDevice::Transport::Cnos < Puppet::Util::NetworkDevice
   rescue
     return false
   end
-
-  # Given a string containing objects matching /Partition/Object, return an
-  # array of all found objects.
-  def find_monitors(string)
-    return nil if string.nil?
-    if string == 'default'
-      ['default']
-    elsif string =~ %r{/none$}
-      ['none']
-    else
-      string.scan(/(\/\S+)/).flatten
-    end
-  end
-
-  # Monitoring:  Parse out the availability integer.
-  def find_availability(string)
-    return nil if string.nil?
-    return nil if string == 'default' || string == 'none'
-    # Look for integers within the string.
-    matches = string.match(/min\s(\d+)/)
-    if matches
-      matches[1]
-    else
-      'all'
-    end
-  end
 end
