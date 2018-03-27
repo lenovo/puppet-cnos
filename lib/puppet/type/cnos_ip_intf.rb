@@ -27,11 +27,15 @@ Puppet::Type.newtype(:cnos_ip_intf) do
   ensurable
 
   # Parameters
-  newparam(:if_name, namevar: true) do
+  newparam(:name, namevar: true) do
     desc 'Ethernet interface name'
   end
 
   # Properties
+  newproperty(:if_name, namevar: true) do
+    desc 'Ethernet interface name'
+  end
+
   newproperty(:vrf_name) do
     desc 'string 32 characters long'
   end
