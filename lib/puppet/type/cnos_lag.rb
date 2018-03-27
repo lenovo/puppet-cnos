@@ -29,8 +29,8 @@ Puppet::Type.newtype(:cnos_lag) do
   ensurable
 
   # Parameters
-  newparam(:lag_id, namevar: true) do
-    desc 'lag_id an integer from 1-4096'
+  newparam(:name, namevar: true) do
+    desc 'name is mapped to lag_id'
 
     munge(&:to_i)
 
@@ -40,6 +40,16 @@ Puppet::Type.newtype(:cnos_lag) do
   end
 
   # Properties
+  newproperty(:lag_id) do
+    desc 'lag_id an integer from 1-4096'
+
+    munge(&:to_i)
+
+    validate do |value|
+      raise 'value not within limit (1-4096)' unless value.to_i.between?(1, 4096)
+    end
+  end
+
   newproperty(:interfaces, array_matching: :all) do
     desc 'array of interfaces dictionary'
     #     def insync?(current)
