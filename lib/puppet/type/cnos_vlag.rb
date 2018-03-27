@@ -23,7 +23,7 @@ Puppet::Type.newtype(:cnos_vlag) do
   ensurable
 
   # Parameters
-  newparam(:inst_id, namevar: true) do
+  newparam(:name, namevar: true) do
     desc 'inst_id an integer from 2-3999'
 
     validate do |value|
@@ -32,6 +32,14 @@ Puppet::Type.newtype(:cnos_vlag) do
   end
 
   # Properties
+  newproperty(:inst_id) do
+    desc 'inst_id an integer from 2-3999'
+
+    validate do |value|
+      raise 'value not within limit (1-64)' unless value.to_i.between?(1, 64)
+    end
+  end
+
   newproperty(:port_aggregator) do
     desc 'string 32 characters long'
 
