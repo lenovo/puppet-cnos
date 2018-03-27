@@ -23,7 +23,7 @@ Puppet::Type.newtype(:cnos_lacp) do
   ensurable
 
   # Parameters
-  newparam(:title, namevar: true) do
+  newparam(:name, namevar: true) do
     desc 'name of parameter'
   end
 
