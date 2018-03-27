@@ -13,66 +13,108 @@
 
 ## Module description
 
-This module uses REST to manage various Network management features of Switches running Lenovo CNOS and acts as a foundation for building higher level abstractions within Puppet. The CNOS module provides a set of types, providers and resources for managing Lenovo CNOS switches. These include resources for VLAN provisioning, VLAG, ARP, Telemetry, LAG, LACP, IP-Interface Mapping, VLAN-Port Mapping etc.
+This module uses REST to manage various Network management features of Switches running Lenovo CNOS and acts as a foundation for building higher level abstractions within Puppet. 
+The CNOS module provides a set of types, providers and resources for managing Lenovo CNOS switches. 
+These include resources for VLAN provisioning, VLAG, ARP, Telemetry, LAG, LACP, IP-Interface Mapping, VLAN-Port Mapping etc.
 
 
 ## Setup
 
 ### Beginning with CNOS Module in puppet
 
-Before you can use the CNOS module, you must create a proxy system able to run puppet device. Your Puppet agent will serve as the "proxy system" for the puppet device subcommand.
+Before you can use the CNOS module, you must create a proxy system able to run puppet device. 
+Your Puppet agent will serve as the proxy for the puppet device subcommand.
 
-Create a device.conf file in the Puppet conf directory (either /etc/puppet or /etc/puppetlabs/puppet) on the Puppet agent. Within your device.conf, you must have:
-
-~~~
-[<FQDN of Switch>]
-type cnos
-url https://<USERNAME>:<PASSWORD>@<IP ADDRESS OF CNOS Switch>/
-~~~
-
-In the above example, `<USERNAME>` and `<PASSWORD>` refer to Puppet's login for the device. And <FQDN of Switch> is the Fully Qualified Domain Name of the switch 
-Make sure the Switch is reachable by its FQDN from the Master and Agent instance
-Additionally, you must install the lenovo-rbapi gem into the Puppet Ruby environment on the proxy host (Puppet agent) by declaring the cnos-rbapi class on that host. If you do not install the lenovo-rbapi gem, version 0.0.5, the module will not work.
 
 ## Usage
 
 
-### Install and set up 
+### Installation Requirements 
 
-The following pre-existing infrastructure is required for the use of cnos module:
+The following infrastructure is required for the use of CNOS module:
 
-1. A server running as a Puppet master.
-2. A Puppet agent running as a proxy or controller to the CNOS device.
-3. A CNOS device that has been registered with the Puppet master via the proxy or controller.
-5. Download CNOS Module from Puppet forge and install it into your Pupet master
+1. A server running as a Puppet Master
+2. A Puppet Agent running as a Puppet Device proxy to the CNOS device (switch)
+3. A CNOS device (switch) running fimrware version 10.6 or later
 
-### Steps
+### Installation and Configuration Steps
 
-1.  Update the manifest file under /etc/puppetlabs/code/environment/production/modules/cnos/manifests/<feature>.pp and Run Apply to refresh catalog
-2.  Classify the CNOS device with the required resource types from PE console
-3.  Apply classification to the device from the proxy node by running `puppet device -v --user=root`.
+1.  Install Puppet CNOS Module on Puppet Master
+2.  Install CNOS and Rest-Client gems on Puppet Agent, running as proxy to the CNOS device (switch)
+3.  Create a device.conf file on the Puppet Agent node with details of the CNOS device (switch)
+4.  Run Puppet Device command on the Puppet Agent to initiate registration with the Puppet Master
+5.  Creating, Updating and Applying Manifests (Resources) to create a catalog on Puppet Master
+6.  Classify the CNOS device to the applied Manifests (Resources) from PE console
+7.  Run Configuration Task to the CNOS device (switch) per Catalog from Puppet Master
 
 See below for the detailed steps.
 
-#### Step One: Classifying your servers
+#### Step One: Install Puppet CNOS Module on Puppet Master
+
+To install the module run, 
+
+puppet module install lenovo-cnos
+
+#### Step Two: Install CNOS and Rest-Client gems on Puppet Agent
+
+To install the gem files on Puppet Agent
+
+/opt/puppetlabs/puppet/bin/gem install rest-client
+/opt/puppetlabs/puppet/bin/gem install lenovo-rbapi -v 0.0.5
+
+
+#### Step Three: Create a device.conf file on the Puppet Agent
+
+Create a device.conf file in the /etc/puppetlabs/puppet/ directory on Puppet Agent with details of the CNOS device (switch)
+
+[<FQDN of Switch>]
+type cnos
+url https://<USERNAME>:<PASSWORD>@<IP ADDRESS OF CNOS Switch>/
+
+In the above example, 
+<USERNAME> and <PASSWORD> refer to Puppet's login for the device
+FQDN refers to Fully Qualified Domain Name of the switch 
+
+NOTE: Make sure the Switch is reachable by its FQDN from the Master and Agent instance
+
+
+#### Step Four: Run Puppet Device command on the Puppet Agent
+
+Run the following command on Puppet Agent to have the device proxy node generate a certificate for the device (switch)
+puppet device -v
+
+Verify the device (switch) FQDN with SSL certificate information is listed on the output of following command on Puppet Master
+puppet cert list --all
+
+Sign the device (switch) SSL certificate on Puppet Master
+puppet cert sign <device FQDN>
+
+
+#### Step Five: Updating and Applying Manifests (Resources)
+
+Manifests are available at /etc/puppetlabs/code/environment/production/modules/cnos/manifests/
+Modify existing manifest to your network configuration requirements (for eg: For VLAN - vlan id, name and admin_state)
+
+Sample Manifest
+class cnos::vlan {
+  cnos_vlan { '11':
+    ensure      => 'present',
+    admin_state => 'down',
+    vlan_name   => 'test11',
+  }
+}
+
+
+#### Step Six: Classify the CNOS device
 
 Open Puppet Enterprise (PE) Console using https://<FQDN of Puppet Master>/ and enter credentials created during Puppet Enterprise Installation
-Click on Classification under Configure section and select the Configuration Class and Switches
+Click on Classification under Configure section and select the Manifests (Resource - cnos::<class>) and Node (switch/device)
 
-#### Step Two: Run puppet device
+#### Step Seven: Run Configuration Tasks to the CNOS device from Puppet Agent
 
-Run the following command to have the device proxy node generate a certificate and apply your classifications to the CNOS device.
-
-~~~
-$ puppet device -v --user=root
-~~~
-
-If you do not run this command, clients cannot issue REST Commands to the CNOS Switches.
-
-At this point, your set up should be up and fielding requests.
-
-(Note: Due to [a bug](https://tickets.puppetlabs.com/browse/PUP-1391), passing `--user=root` is required, even though the command is already run as root.)
-
+Run the following commands on Puppet Agent
+puppet agent --test
+puppet device -v --user=root
 
 
 ## Reference
@@ -172,7 +214,7 @@ class cnos::ip_intf {
 }
 ```
 
-### cnos::lacp
+### cnos::cnos::lacp
 
 Handles Lacp on Lenovo CNOS
 For details regarding parameters, please refer to [cnos_lacp](#cnos_lacp).
@@ -186,7 +228,7 @@ class cnos::lacp {
 }
 ```
 
-### cnos::lag
+### cnos::cnos::lag
 
 Handles lag on Lenovo CNOS
 For details regarding parameters, please refer to [cnos_lag](#cnos_lag).
@@ -207,7 +249,7 @@ class cnos::lag {
 }
 ```
 
-### cnos::sys
+### cnos::cnos::sys
 
 Handles Telemetry System properties on Lenovo CNOS
 For details regarding parameters, please refer to [cnos_sys](#cnos_sys).
@@ -223,7 +265,7 @@ class cnos::sys {
 }
 ```
 
-### cnos::vlag_health
+### cnos::cnos::vlag_health
 
 Handles Vlag_health on Lenovo CNOS
 For details regarding parameters, please refer to [cnos_vlag_health](#cnos_vlag_health).
@@ -241,7 +283,7 @@ class cnos::vlag_health {
 
 ```
 
-### cnos::vlag_isl
+### cnos::cnos::vlag_isl
 
 Handles vlag isl on Lenovo cnos
 For details regarding parameters, please refer to [cnos_vlag_isl](#cnos_vlag_isl).
@@ -256,7 +298,7 @@ class cnos::vlag_isl {
 
 ```
 
-### cnos::vlag
+### cnos::cnos::vlag
 
 Handles Vlags on Lenovo cnos.
 For details regarding parameters, please refer to [cnos_vlag](#cnos_vlag).
@@ -273,7 +315,7 @@ class cnos::vlag {
 
 ```
 
-### cnos::vlan_intf
+### cnos::cnos::vlan_intf
 
 Handles Vlan -Interface mapping on Lenovo cnos.
 For details regarding parameters, please refer to [cnos_vlan_intf](#cnos_vlan_intf).
@@ -290,7 +332,7 @@ class cnos::vlan_intf {
 }
 ```
 
-### cnos::vlan
+### cnos::cnos::vlan
 
 Handles VLAN on Lenovo cnos.
 For details regarding parameters, please refer to [cnos_vlan](#cnos_vlan).
@@ -307,7 +349,7 @@ class cnos::vlan {
 
 ```
 
-### cnos::vrrp
+### cnos::cnos::vrrp
 
 Handles Vrrp on Lenovo cnos.
 
