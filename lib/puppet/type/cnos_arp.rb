@@ -22,11 +22,15 @@ Puppet::Type.newtype(:cnos_arp) do
   ensurable
 
   # Parameters
-  newparam(:if_name, namevar: true) do
+  newparam(:name, namevar: true) do
     desc 'Ethernet interface name'
   end
 
   # Properties
+  newproperty(:if_name, namevar: true) do
+    desc 'Ethernet interface name'
+  end
+
   newproperty(:ageout_time) do
     desc 'integer from 60-28800'
 
