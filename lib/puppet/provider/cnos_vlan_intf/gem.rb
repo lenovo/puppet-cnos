@@ -73,5 +73,18 @@ Puppet::Type.type(:cnos_vlan_intf).provide(:gem, parent: Puppet::Provider::Cnos)
     end
     @property_hash = resource.to_hash
   end
-  # Create and Destroy is supported in REST.
+
+  def destroy
+    Puppet.debug('I am inside destroy')
+    params = {}
+    params['if_name'] = resource[:if_name]
+    params['pvid'] = resource[:pvid] unless resource[:pvid].nil?
+    params['vlans'] = 'none'
+    unless resource[:bridgeport_mode].nil?
+      params['bridgeport_mode'] = resource[:bridgeport_mode]
+    end
+    resp = Puppet::Provider::Cnos.update_vlan_intf(resource[:if_name], params)
+    @property_hash.clear
+  end
+
 end
