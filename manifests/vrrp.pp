@@ -8,7 +8,7 @@
 #
 # THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS, WITHOUT
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
-# A Vlan creation/update/delete class for CNOS Devices.
+# A VRRP creation/update/delete class for CNOS Devices.
 #
 # This is an example of how to create a VRRP
 # If you change ensure to 'absent', it will delete the VRRP Configuration
