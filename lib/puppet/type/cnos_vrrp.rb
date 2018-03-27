@@ -52,10 +52,20 @@ Puppet::Type.newtype(:cnos_vrrp) do
   
   newproperty(:if_name) do
     desc 'Interface name'
+    
+    validate do |value|
+      super value
+      raise('the name must be string representation of interface name') if value.size > 64
+    end
   end
 
   newproperty(:ip_addr) do
     desc 'string 32 characters long'
+    
+    validate do |value|
+      super value
+      raise('the name must be string representation of interface name') if value.size > 11
+    end
   end
 
   newproperty(:ad_intvl) do
@@ -69,7 +79,11 @@ Puppet::Type.newtype(:cnos_vrrp) do
   end
   newproperty(:preempt) do
     desc 'one of yes or no'
-    # newvalues('yes', 'no')
+    
+    validate do |value|
+      super value
+      raise('the name must be string representation of admin_state') if value != 'yes' && value != 'no'
+    end
   end
 
   newproperty(:prio) do
@@ -84,19 +98,38 @@ Puppet::Type.newtype(:cnos_vrrp) do
 
   newproperty(:admin_state) do
     desc 'one of up or down'
+    
+    validate do |value|
+      super value
+      raise('the name must be string representation of admin_state') if value != 'up' && value != 'down'
+    end
   end
 
   newproperty(:track_if) do
     desc 'Interface name'
+    
+     validate do |value|
+      super value
+      raise('the name must be string representation of interface name') if value.size > 64
+    end
   end
 
   newproperty(:accept_mode) do
     desc 'one of yes or no'
-    newvalues('yes', 'no')
+    #newvalues('yes', 'no')
+    validate do |value|
+      super value
+      raise('the name must be string representation of admin_state') if value != 'yes' && value != 'no'
+    end
   end
 
   newproperty(:v2_compt) do
     desc 'one of yes, no'
+    
+    validate do |value|
+      super value
+      raise('the name must be string representation of admin_state') if value != 'yes' && value != 'no'
+    end
   end
 
   newproperty(:switch_back_delay) do
