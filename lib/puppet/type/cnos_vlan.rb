@@ -27,7 +27,7 @@ Puppet::Type.newtype(:cnos_vlan) do
 
     validate do |value|
       super value
-      raise('the name must be between 1 and 64 characters long') if value.size > 64
+      raise('the name must be string representation of vlan id') if value.size > 64
     end
   end
 
@@ -42,6 +42,10 @@ Puppet::Type.newtype(:cnos_vlan) do
 
   newproperty(:vlan_name) do
     desc 'string 32 characters long'
+    validate do |value|
+      super value
+      raise('the name must be string representation of vlan id') if value.size > 32
+    end
   end
 
   newproperty(:admin_state) do
