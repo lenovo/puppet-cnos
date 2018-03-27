@@ -25,7 +25,7 @@ Puppet::Type.newtype(:cnos_vlag_conf) do
   ensurable
 
   # Parameters
-  newparam(:title, namevar: true) do
+  newparam(:name, namevar: true) do
     desc 'name of parameter'
   end
 
