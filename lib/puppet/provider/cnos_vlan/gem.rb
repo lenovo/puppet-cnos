@@ -16,14 +16,11 @@ require 'json'
 Puppet::Type.type(:cnos_vlan).provide(:gem, parent: Puppet::Provider::Cnos) do
   desc 'Manage Vlan on Lenovo CNOS. Requires cnos-rbapi'
 
-  # confine operatingsystem: [:ubuntu]
-
   mk_resource_methods
 
   def self.instances
     instances = []
     vlans = Puppet::Provider::Cnos.call_items('/nos/api/cfg/vlan')
-    # Puppet.debug("Vlans are "+vlans.to_s)
     return [] if vlans.nil?
     vlans.each do |item|
       Puppet.debug('Vlan Id is ' + item['vlan_id'].to_s)
@@ -56,24 +53,20 @@ Puppet::Type.type(:cnos_vlan).provide(:gem, parent: Puppet::Provider::Cnos) do
     Puppet.debug('I am inside flush')
     params = {}
     if @property_hash != {}
-      # conn = Connect.new('./cnos/config.yml')
       params['vlan_name'] = resource[:vlan_name] unless resource[:vlan_name].nil?
       unless resource[:admin_state].nil?
         params['admin_state'] = resource[:admin_state]
       end
-      # resp = Vlan.update_vlan(conn, resource[:vlan_id], params)
       resp = Puppet::Provider::Cnos.update_vlan(resource[:vlan_id].to_i, params)
     end
     @property_hash = resource.to_hash
   end
 
   def create
-    # conn = Connect.new('./cnos/config.yml')
     Puppet.notice('I am inside create')
     params = { 'vlan_id' => resource[:name].to_i,
                'vlan_name' => resource[:vlan_name],
                'admin_state' => resource[:admin_state] }
-    # Vlan.create_vlan(conn, params)
     resp = Puppet::Provider::Cnos.create_vlan(params)
     @property_hash.clear
   end
@@ -85,7 +78,6 @@ Puppet::Type.type(:cnos_vlan).provide(:gem, parent: Puppet::Provider::Cnos) do
 
   def destroy
     Puppet.debug('I am inside destroy' + :vlan_id.to_s)
-    # Vlan.delete_vlan(conn, resource[:vlan_id])
     resp = Puppet::Provider::Cnos.delete_vlan(resource[:vlan_id].to_i)
     @property_hash.clear
   end
