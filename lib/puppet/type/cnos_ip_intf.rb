@@ -32,7 +32,7 @@ Puppet::Type.newtype(:cnos_ip_intf) do
   end
 
   # Properties
-  newproperty(:if_name, namevar: true) do
+  newproperty(:if_name) do
     desc 'Ethernet interface name'
   end
 
