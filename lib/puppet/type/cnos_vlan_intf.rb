@@ -35,7 +35,7 @@ Puppet::Type.newtype(:cnos_vlan_intf) do
   end
 
   # Properties
-  newparam(:if_name) do
+  newproperty(:if_name) do
     desc 'Ethernet interface name'
     
     validate do |value|
