@@ -73,5 +73,5 @@ Puppet::Type.type(:cnos_vlan_intf).provide(:gem, parent: Puppet::Provider::Cnos)
     end
     @property_hash = resource.to_hash
   end
-  # Create and Destroy is not coded here.
+  # Create and Destroy is supported in REST.
 end
