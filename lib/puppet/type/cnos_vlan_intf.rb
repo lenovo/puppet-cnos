@@ -27,20 +27,37 @@ Puppet::Type.newtype(:cnos_vlan_intf) do
   # Parameters
   newparam(:name, namevar: true) do
     desc 'Ethernet interface name'
+    
+    validate do |value|
+      super value
+      raise('the name must be string representation of interface name') if value.size > 64
+    end
   end
 
   # Properties
   newparam(:if_name) do
     desc 'Ethernet interface name'
+    
+    validate do |value|
+      super value
+      raise('the name must be string representation of interface name') if value.size > 64
+    end
   end
   newproperty(:bridgeport_mode) do
     newvalues(:access, :trunk)
     desc 'one of access/trunk'
+    validate do |value|
+      super value
+      raise('the name must be string representation of bridgeport mode') if value != 'access' && value != 'trunk'
+    end
   end
 
   newproperty(:pvid) do
     desc 'integer from 1-3999'
 
+    validate do |value|
+      raise 'value not within limit (1-3999)' unless value.to_i.between?(1, 3999)
+    end
     munge(&:to_i)
   end
 
