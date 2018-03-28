@@ -15,6 +15,7 @@ Puppet::Type.newtype(:cnos_arp) do
 
  	    Example:
  	     cnos_arp {"<if_name>":
+                     if_name     => <if_name>
 		     ageout_time => <ageout_time>,
              }
            }'
@@ -24,16 +25,29 @@ Puppet::Type.newtype(:cnos_arp) do
   # Parameters
   newparam(:name, namevar: true) do
     desc 'Ethernet interface name'
+    
+    validate do |value|
+      super value
+      raise('the name must be string representation of interface name') if value.size > 64
+    end
   end
 
   # Properties
   newproperty(:if_name) do
     desc 'Ethernet interface name'
+    
+    validate do |value|
+      super value
+      raise('the name must be string representation of interface name') if value.size > 64
+    end
   end
 
   newproperty(:ageout_time) do
     desc 'integer from 60-28800'
 
+    validate do |value|
+      raise 'value not within limit (60-28800)' unless value.to_i.between?(60, 28800)
+    end
     munge(&:to_i)
   end
 end
