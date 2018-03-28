@@ -15,7 +15,7 @@
 # system feature attributes: heartbeat-enable and msg-interval
 # If you change ensure to 'absent', it will reset this value to factory default
 # The default value for heartbeat-enable is 1 and
-# for msg-interval its 5 seconds
+# default value for msg-interval its 5 seconds
 #
 # @example Declaring the class
 #   include cnos_sys
