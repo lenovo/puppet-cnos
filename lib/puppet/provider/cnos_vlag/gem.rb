@@ -28,6 +28,7 @@ Puppet::Type.type(:cnos_vlag).provide(:gem, parent: Puppet::Provider::Cnos) do
       Puppet.debug('port_aggregator is ' + item['port_aggregator'].to_s)
       Puppet.debug('status is ' + item['status'].to_s)
       instances << new(name: item['inst_id'].to_s,
+                       inst_id: item['inst_id'].to_i,
                        port_aggregator: item['port_aggregator'],
                        ensure: :present,
                        status: item['status'])
