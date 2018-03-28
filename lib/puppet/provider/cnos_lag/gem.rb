@@ -28,7 +28,7 @@ Puppet::Type.type(:cnos_lag).provide(:gem, parent: Puppet::Provider::Cnos) do
     if resource[:interfaces] != nil
       params['interfaces'] = resource[:interfaces]
     end
-    return params
+    params
   end
 
   def interfaces
