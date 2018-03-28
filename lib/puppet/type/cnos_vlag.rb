@@ -15,8 +15,9 @@ Puppet::Type.newtype(:cnos_vlag) do
 
  	    Example:
  	     cnos_vlag {1:
+                     inst_id         => <inst_id>,
 		     port_aggregator => <port_aggregator>,
-		     status => enable/disable,
+		     status          => enable/disable,
              }
            }'
   apply_to_device
@@ -24,7 +25,7 @@ Puppet::Type.newtype(:cnos_vlag) do
 
   # Parameters
   newparam(:name, namevar: true) do
-    desc 'inst_id an integer from 2-3999'
+    desc 'inst_id an integer from 1-64'
 
     validate do |value|
       raise 'value not within limit (1-64)' unless value.to_i.between?(1, 64)
@@ -33,7 +34,7 @@ Puppet::Type.newtype(:cnos_vlag) do
 
   # Properties
   newproperty(:inst_id) do
-    desc 'inst_id an integer from 2-3999'
+    desc 'inst_id an integer from 1-64'
 
     validate do |value|
       raise 'value not within limit (1-64)' unless value.to_i.between?(1, 64)
@@ -51,7 +52,10 @@ Puppet::Type.newtype(:cnos_vlag) do
   end
 
   newproperty(:status) do
-    desc 'one of up or down'
-    #  newvalues('enable', 'disable')
+    desc 'one of enable or disable'
+    validate do |value|
+      super value
+      raise('the name must be string representation of bridgeport mode') if value != 'enable' && value != 'disable'
+    end
   end
 end
