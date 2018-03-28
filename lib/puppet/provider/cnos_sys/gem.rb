@@ -45,5 +45,14 @@ Puppet::Type.type(:cnos_sys).provide(:gem, parent: Puppet::Provider::Cnos) do
     resp = Puppet::Provider::Cnos.get_sys_feature
     resp != nil
   end
+  
+  def destroy
+    Puppet.debug('I am inside destroy')
+    params = {}
+    params['heartbeat-enable'] = 1
+    params['msg-interval'] = 5
+    resp = Puppet::Provider::Cnos.set_sys_feature(params)
+    @property_hash.clear
+  end
 
 end
