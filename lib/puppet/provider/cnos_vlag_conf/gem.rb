@@ -73,6 +73,13 @@ Puppet::Type.type(:cnos_vlag_conf).provide(:gem, parent: Puppet::Provider::Cnos)
 
   def destroy
     Puppet.debug('I am inside destroy')
+    params = {}
+    params['status'] = 'disable'
+    params['tier_id'] = 0
+    params['priority'] = 0
+    params['auto_recover'] = 300
+    params['startup_delay'] = 120
+    resp = Puppet::Provider::Cnos.update_vlag_conf(params)
     @property_hash.clear
   end
 end
