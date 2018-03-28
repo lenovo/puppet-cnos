@@ -9,8 +9,23 @@
 # THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS, WITHOUT
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
+# A VLAG creation/update/delete class for CNOS Devices.
+#
+# This is an example of how to create a VLAG Instance.
+# If you change ensure to 'absent', it will delete the vlag instance
+# You can change status and port_aggregator values of a vlag instance.
+#
+# @example Declaring the class
+#   include cnos_vlag
+#
+# @param [String] name Vlag instance id as string.
+# @property [Integer] inst_id Vlag instance id.
+# @property [String] status VLAG status, one of enable, disable.
+# @property [String] port_aggregator LAG identifier; an integer from 1-4096.
+
 class cnos::vlag {
   cnos_vlag { '2':
+    inst_id         => 2,
     ensure          => 'present',
     status          => 'disable',
     port_aggregator => 20,
