@@ -13,7 +13,9 @@
 #
 # This is an example of how to create a LAG
 # If you change ensure to 'absent', it will delete the LAG Configuration
-# You can change various attributes associated with LAG using this class
+# You can configure only min_links and lag_id attributes 
+# associated with LAG using this class. More LAG attributes will be
+# supported in furture releases
 #
 # @example Declaring the class
 #   include cnos_lag
