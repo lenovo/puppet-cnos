@@ -17,7 +17,7 @@
 # You can change all the parameters of VLAG configurations using this class
 #
 # @example Declaring the class
-#   include cnos_vlan_intf
+#   include cnos_vlag_conf
 #
 # @param [String] name The string vlag_conf.
 # @property [String] status Whether the vLAG is enabled or disabled.
