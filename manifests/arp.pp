@@ -20,7 +20,7 @@
 #   include cnos_arp
 #
 # @param [String] name Ethernet interface name.
-#@property [Integer] ageout_time The global ARP entry age-out time, in seconds.
+# @property [Integer] ageout_time The global ARP entry age-out time, in seconds.
 
 class cnos::arp {
   cnos_arp{'Ethernet1/1':
