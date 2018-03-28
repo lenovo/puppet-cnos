@@ -31,8 +31,12 @@ Puppet::Type.newtype(:cnos_sys) do
   # Properties
   newproperty(:heartbeat_enable) do
     desc '0/1 for enable or disable'
-
+    
     munge(&:to_i)
+
+    validate do |value|
+      raise 'value not within limit (1-600)' unless value.to_i >=0 && value.to_i < 2
+    end
   end
 
   newproperty(:msg_interval) do
