@@ -13,7 +13,7 @@ Puppet::Type.newtype(:cnos_vlag_hc) do
   desc ' = {
             Manage Vlag Health on Lenovo cnos.
               Example:
-                cnos_vlag_hc {"vlaghealth":
+                cnos_vlag_hc {"vlag_health":
                   "keepalive_interval": 10,
                   "retry_interval": 30,
                   "peer_ip": "10.240.177.120",
@@ -28,15 +28,30 @@ Puppet::Type.newtype(:cnos_vlag_hc) do
   # Parameters
   newparam(:name, namevar: true) do
     desc 'name of parameter'
+    
+    validate do |value|
+      super value
+      raise('the name must be between 1 and 64 characters long') if value.size > 64
+    end
   end
 
   # Properties
   newproperty(:peer_ip) do
     desc 'ip address'
+    
+    validate do |value|
+      super value
+      raise('the name must be string representation of interface name') if value.size > 11
+    end
   end
 
   newproperty(:vrf) do
     desc 'vrf context string'
+    
+    validate do |value|
+      super value
+      raise('VRF context string must be between 1 and 64 characters long') if value.size > 64
+    end
   end
 
   newproperty(:keepalive_attempts) do
