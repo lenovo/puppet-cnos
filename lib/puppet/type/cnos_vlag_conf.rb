@@ -55,7 +55,7 @@ Puppet::Type.newtype(:cnos_vlag_conf) do
     munge(&:to_i)
 
     validate do |value|
-      unless value.to_i.between?(0, 65_535)
+      unless value.to_i.between?(0, 65535)
         raise 'value not within limit (0-65535)'
       end
     end
