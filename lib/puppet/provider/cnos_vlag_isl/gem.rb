@@ -40,3 +40,10 @@ Puppet::Type.type(:cnos_vlag_isl).provide(:gem, parent: Puppet::Provider::Cnos) 
     end
     @property_hash = resource.to_hash
   end
+  
+  def destroy
+    Puppet.debug('I am inside destroy')
+    # This is not supported as of now
+    @property_hash.clear
+  end
+end
