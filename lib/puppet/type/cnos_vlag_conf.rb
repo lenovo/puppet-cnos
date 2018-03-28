@@ -32,6 +32,11 @@ Puppet::Type.newtype(:cnos_vlag_conf) do
   # Properties
   newproperty(:status) do
     desc 'status'
+    
+    validate do |value|
+      super value
+      raise('the name must be string representation of status') if value != 'enable' && value != 'disable'
+    end
   end
 
   newproperty(:tier_id) do
