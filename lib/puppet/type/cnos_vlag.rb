@@ -55,7 +55,7 @@ Puppet::Type.newtype(:cnos_vlag) do
     desc 'one of enable or disable'
     validate do |value|
       super value
-      raise('the name must be string representation of bridgeport mode') if value != 'enable' && value != 'disable'
+      raise('the name must be string representation of status') if value != 'enable' && value != 'disable'
     end
   end
 end
