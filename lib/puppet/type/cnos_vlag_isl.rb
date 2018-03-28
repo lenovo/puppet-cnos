@@ -24,6 +24,11 @@ Puppet::Type.newtype(:cnos_vlag_isl) do
   # Parameters
   newparam(:name, namevar: true) do
     desc 'name of parameter'
+
+    validate do |value|
+      super value
+      raise('the name must be between 1 and 64 characters long') if value.size > 64
+    end
   end
 
   # Properties
