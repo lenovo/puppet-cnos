@@ -47,4 +47,12 @@ Puppet::Type.type(:cnos_arp_sys).provide(:gem, parent: Puppet::Provider::Cnos) d
     resp = Puppet::Provider::Cnos.set_arp_sys_prop(params)
     @property_hash.clear
   end
+  
+  def destroy
+    Puppet.debug('I am inside destroy')
+    params = {}
+    arams['ageout_time'] = 1500
+    resp = Puppet::Provider::Cnos.update_vlan_intf(resource[:if_name], params)
+    @property_hash.clear
+  end
 end
