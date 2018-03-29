@@ -11,6 +11,7 @@
 
 class cnos::bst_feature {
   cnos_telemetry{ 'bst_feature':
+    ensure                      => 'present',
     collection_interval         => 70,
     send_async_reports          => 0,
     send_snapshot_on_trigger    => 1,
