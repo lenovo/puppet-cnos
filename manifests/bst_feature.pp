@@ -27,7 +27,6 @@
 # @property [Integer] trigger_rate_limit_interval The trigger rate limit interval
 # @property [Integer] bst_enable Set to 1 to enable BST, 0 to disable it.
 
-
 class cnos::bst_feature {
   cnos_telemetry{ 'bst_feature':
     ensure                      => 'present',
