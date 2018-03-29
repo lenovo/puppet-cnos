@@ -1,5 +1,6 @@
 
 2018-01-24 Release 0.3.0
+
 ###Summary
 This release contains all the requirements for a valid Puppet module
 All the bugs came up during testing has been resolved
@@ -40,6 +41,7 @@ All the bugs came up during testing has been resolved
 
 
 2018-01-24 Release 0.1.0
+
 ###Summary
 Initial release covering all the 15 modules.
 
