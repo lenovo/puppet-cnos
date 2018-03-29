@@ -16,6 +16,7 @@ Puppet::Type.newtype(:cnos_ip_intf) do
  	    Example:
  	     cnos_ip_intf{"<if_name>":
  	                  bridge_port => yes/no,
+                          if_name => "<if_name>",
 		          mtu => "<mtu>",
 		          ip_addr => "<ip_addr>",
 		          ip_prefix_len => "<ip_prefix_len>",
@@ -29,19 +30,39 @@ Puppet::Type.newtype(:cnos_ip_intf) do
   # Parameters
   newparam(:name, namevar: true) do
     desc 'Ethernet interface name'
+
+    validate do |value|
+      super value
+      raise('the name must be string representation of interface name') if value.size > 64
+    end
   end
 
   # Properties
   newproperty(:if_name) do
     desc 'Ethernet interface name'
+
+    validate do |value|
+      super value
+      raise('the name must be string representation of interface name') if value.size > 64
+    end
   end
 
   newproperty(:vrf_name) do
     desc 'string 32 characters long'
+
+    validate do |value|
+      super value
+      raise('VRF name must be between 1 and 32 characters long') if value.size > 32
+    end
   end
 
   newproperty(:bridge_port) do
     desc 'one of yes/no'
+	  
+    validate do |value|
+      super value
+      raise('the value must be yes or no') if value != 'yes' && value != 'no'
+    end
   end
 
   newproperty(:mtu) do
@@ -58,6 +79,11 @@ Puppet::Type.newtype(:cnos_ip_intf) do
 
   newproperty(:ip_addr) do
     desc 'ip address of interface'
+
+    validate do |value|
+      super value
+      raise('the name must be string representation of ip address') if value.size > 11
+    end
   end
 
   newproperty(:ip_prefix_len) do
@@ -72,5 +98,10 @@ Puppet::Type.newtype(:cnos_ip_intf) do
 
   newproperty(:admin_state) do
     desc 'one of up or down'
+
+    validate do |value|
+      super value
+      raise('the name must be string representation of admin_state') if value != 'up' && value != 'down'
+    end
   end
 end
