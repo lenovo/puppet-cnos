@@ -38,18 +38,30 @@ Puppet::Type.newtype(:cnos_telemetry) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 
   newproperty(:send_async_reports) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 
   newproperty(:async_full_report) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 
   newproperty(:collection_interval) do
@@ -82,11 +94,19 @@ Puppet::Type.newtype(:cnos_telemetry) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 
   newproperty(:async_full_reports) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 end
