@@ -15,6 +15,8 @@ All the bugs came up during testing has been resolved
 - Added destroy method in all gem.rb
 
 2018-02-26 Release 0.2.0
+
+###Summary
 This release removes the dependency of config.yml and added the code to the 
 util/network_device folder so that facts are fetched for the device.
 The transport layer which establishes with network device is realized
