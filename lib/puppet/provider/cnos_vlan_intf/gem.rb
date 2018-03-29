@@ -29,6 +29,7 @@ Puppet::Type.type(:cnos_vlan_intf).provide(:gem, parent: Puppet::Provider::Cnos)
       Puppet.debug('PVID is ' + item['pvid'].to_s)
       instances << new(name:  item['if_name'],
                        bridgeport_mode: item['bridgeport_mode'],
+                       if_name: item['if_name'],
                        ensure: :present,
                        vlans: item['vlans'],
                        pvid:  item['pvid'])
