@@ -31,6 +31,7 @@ Puppet::Type.type(:cnos_ip_intf).provide(:gem, parent: Puppet::Provider::Cnos) d
       instances << new(name: item['if_name'],
                        vrf_name: item['vrf_name'],
                        bridge_port: item['bridge_port'],
+                       if_name: item['if_name'],
                        mtu: item['mtu'],
                        ip_addr: item['ip_addr'],
                        ip_prefix_len: item[:ip_prefix_len],
@@ -81,5 +82,14 @@ Puppet::Type.type(:cnos_ip_intf).provide(:gem, parent: Puppet::Provider::Cnos) d
   def exists?
     Puppet.debug('I am inside exists')
     @property_hash[:ensure] == :present
+  end
+  
+  def destroy
+    Puppet.debug('I am inside destroy')
+    params = params_setup
+    params['mtu'] = 1500
+    params['bridge_port'] = 'no' 
+    resp = Puppet::Provider::Cnos.update_ip_prop_intf(resource[:if_name], params)
+    @property_hash.clear
   end
 end
