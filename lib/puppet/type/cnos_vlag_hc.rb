@@ -41,7 +41,7 @@ Puppet::Type.newtype(:cnos_vlag_hc) do
     
     validate do |value|
       super value
-      raise('the name must be string representation of interface name') if value.size > 11
+      raise('the name must be string representation of ip address') if value.size > 11
     end
   end
 
