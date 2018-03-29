@@ -153,5 +153,26 @@ Puppet::Type.type(:cnos_telemetry_track).provide(:gem, parent: Puppet::Provider:
     @property_hash[:ensure] == :present
     true
   end
+  
+  def destroy
+    Puppet.debug('I am inside destroy')
+    params = {}
+    params =
+      {
+        'track-egress-port-service-pool'    => 1,
+        'track-egress-uc-queue'             => 1,
+        'track-egress-rqe-queue'            => 1,
+        'track-egress-cpu-queue'            => 1,
+        'track-ingress-port-service-pool'   => 1,
+        'track-ingress-service-pool'        => 1,
+        'track-egress-mc-queue'             => 1,
+        'track-peak-stats'                  => 1,
+        'track-ingress-port-priority-group' => 1,
+        'track-egress-service-pool'         => 1,
+        'track-device'                      => 1,
+      }
+    Puppet::Provider::Cnos.set_bst_tracking(params)
+    @property_hash.clear
+  end
 
 end
