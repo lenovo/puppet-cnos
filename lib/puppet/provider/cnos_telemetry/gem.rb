@@ -82,4 +82,21 @@ Puppet::Type.type(:cnos_telemetry).provide(:gem, parent: Puppet::Provider::Cnos)
     end
     @property_hash = resource.to_hash
   end
+  
+  def destroy
+    Puppet.debug('I am inside destroy')
+    params = {}
+    params =
+      {
+        'collection-interval'         => 60,
+        'send-async-reports'          => 0,
+        'send-snapshot-on-trigger'    => 1,
+        'trigger-rate-limit'          => 1,
+        'async-full-report'           => 0,
+        'trigger-rate-limit-interval' => 10,
+        'bst-enable'                  => 0,
+      }
+    Puppet::Provider::Cnos.set_bst_feature(params)
+    @property_hash.clear
+  end
 end
