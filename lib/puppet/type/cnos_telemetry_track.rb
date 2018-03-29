@@ -43,65 +43,109 @@ Puppet::Type.newtype(:cnos_telemetry_track) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 
   newproperty(:track_ingress_port_priority_group) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 
   newproperty(:track_ingress_port_service_pool) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 
   newproperty(:track_ingress_service_pool) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 
   newproperty(:track_egress_port_service_pool) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 
   newproperty(:track_egress_service_pool) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 
   newproperty(:track_egress_uc_queue) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 
   newproperty(:track_egress_rqe_queue) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 
   newproperty(:track_egress_cpu_queue) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 
   newproperty(:track_egress_mc_queue) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 
   newproperty(:track_device) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
+    
+    validate do |value|
+      raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
+    end
   end
 end
