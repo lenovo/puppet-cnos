@@ -19,7 +19,7 @@ Puppet::Type.type(:cnos_arp).provide(:gem, parent: Puppet::Provider::Cnos) do
   mk_resource_methods
 
   def self.instances
-    resp = Puppet::Provider::Cnos.get_arp_intf_prop(resource[:if_name])
+    resp = Puppet::Provider::Cnos.get_arp_intf_prop(resource[:name])
     return [] if resp.nil?
     resp['ageout_time']
   end
@@ -35,25 +35,25 @@ Puppet::Type.type(:cnos_arp).provide(:gem, parent: Puppet::Provider::Cnos) do
     Puppet.debug('I am inside flush')
     params = {}
     if @property_hash != {}
-      params = { 'if_name' => resource[:if_name], 'ageout_time' => resource[:ageout_time] }
-      resp = Puppet::Provider::Cnos.set_arp_intf_prop(resource[:if_name], params)
+      params = { 'if_name' => resource[:name], 'ageout_time' => resource[:ageout_time] }
+      resp = Puppet::Provider::Cnos.set_arp_intf_prop(resource[:name], params)
     end
     @property_hash = resource.to_hash
   end
 
   def create
     Puppet.debug('I am inside create')
-    params = { 'if_name' => resource[:if_name], 'ageout_time' => resource[:ageout_time] }
-    resp = Puppet::Provider::Cnos.set_arp_intf_prop(resource[:if_name], params)
+    params = { 'if_name' => resource[:name], 'ageout_time' => resource[:ageout_time] }
+    resp = Puppet::Provider::Cnos.set_arp_intf_prop(resource[:name], params)
     @property_hash.clear
   end
   
   def destroy
     Puppet.debug('I am inside destroy')
     params = {}
-    params['if_name'] = resource[:if_name]
+    params['if_name'] = resource[:name]
     params['ageout_time'] = 1500
-    resp = Puppet::Provider::Cnos.set_arp_intf_prop(resource[:if_name], params)
+    resp = Puppet::Provider::Cnos.set_arp_intf_prop(resource[:name], params)
     @property_hash.clear
   end
 end
