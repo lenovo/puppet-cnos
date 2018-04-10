@@ -88,11 +88,11 @@ package { 'rest-client' :
 #### Step Three: Create a device.conf file on the Puppet Agent
 
 Create a device.conf file in the /etc/puppetlabs/puppet/ directory on Puppet Agent with details of the CNOS device (switch)
-
+```ruby
 [<FQDN of Switch>]
 type cnos
 url https://<USERNAME>:<PASSWORD>@<IP ADDRESS OF CNOS Switch>/
-
+```
 In the above example, 
 <USERNAME> and <PASSWORD> refer to Puppet's login for the device
 FQDN refers to Fully Qualified Domain Name of the switch 
@@ -103,13 +103,19 @@ NOTE: Make sure the Switch is reachable by its FQDN from the Master and Agent in
 #### Step Four: Run Puppet Device command on the Puppet Agent
 
 Run the following command on Puppet Agent to have the device proxy node generate a certificate for the device (switch)
+```ruby
 puppet device -v
-
+```
 Verify the device (switch) FQDN with SSL certificate information is listed on the output of following command on Puppet Master
+```ruby
 puppet cert list --all
+```
 
 Sign the device (switch) SSL certificate on Puppet Master
+```ruby
 puppet cert sign <device FQDN>
+puppet cert list --all
+```
 
 
 #### Step Five: Updating and Applying Manifests (Resources)
