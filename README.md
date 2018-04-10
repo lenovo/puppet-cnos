@@ -35,7 +35,7 @@ The following infrastructure is required for the use of CNOS module:
 
 1. A server running as a Puppet Master
 2. A Puppet Agent running as a Puppet Device proxy to the CNOS device (switch)
-3. A CNOS device (switch) running fimrware version 10.6 or later
+3. A CNOS device (switch) running firmware version 10.6 or later
 
 ### Installation and Configuration Steps
 
@@ -63,6 +63,27 @@ To install the gem files on Puppet Agent
 
 /opt/puppetlabs/puppet/bin/gem install lenovo-rbapi -v 0.0.5
 
+To hanlde rest-client and lenovo-rbapi gem dependencies on Puppet Agent, 'Package' resource is used for reference gems as references on init.pp manifest file on Puppet Master under CNOS Module path. Sample manifest looks like;
+
+```ruby
+class cnos::install {
+ if $::puppetversion and $::puppetversion =~ /Puppet Enterprise/ {
+   $provider = 'pe_gem'
+ } elsif $::puppetversion and versioncmp($::puppetversion, '4.0.0') >= 0 {
+   $provider = 'puppet_gem'
+ } else {
+   $provider = 'gem'
+ }
+ package { 'lenovo-rbapi':
+   ensure   => '0.0.5',
+   provider => $provider,
+ }
+package { 'rest-client' :
+   ensure => '2.0.2',
+   provider => 'puppet_gem',
+ }
+}
+```
 
 #### Step Three: Create a device.conf file on the Puppet Agent
 
