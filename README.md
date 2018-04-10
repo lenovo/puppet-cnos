@@ -124,6 +124,7 @@ Manifests are available at /etc/puppetlabs/code/environment/production/modules/c
 Modify existing manifest to your network configuration requirements (for eg: For VLAN - vlan id, name and admin_state)
 
 Sample Manifest
+```ruby
 class cnos::vlan {
   cnos_vlan { '11':
     ensure      => 'present',
@@ -131,7 +132,7 @@ class cnos::vlan {
     vlan_name   => 'test11',
   }
 }
-
+```
 
 #### Step Six: Classify the CNOS device
 
@@ -141,9 +142,10 @@ Click on Classification under Configure section and select the Manifests (Resour
 #### Step Seven: Run Configuration Tasks to the CNOS device from Puppet Agent
 
 Run the following commands on Puppet Agent
+```ruby
 puppet agent --test
 puppet device -v --user=root
-
+```
 
 ## Reference
 
