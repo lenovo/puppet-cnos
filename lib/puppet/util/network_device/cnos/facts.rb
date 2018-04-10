@@ -38,20 +38,6 @@ class Puppet::Util::NetworkDevice::Cnos::Facts
       facts[fact] = result[fact.to_s]
     end
 
-    # Map CNOS names to expected standard names.
-    facts[:Name]                       = facts[:Name]
-    facts[:Description]                = facts[:Description]
-    facts[:Model]                      = facts[:Model]
-    facts[:'Manufacture Date']         = facts[:'Manufacture Date']
-    facts[:'Serial Number']            = facts[:'Serial Number']
-    facts[:'Part Number']              = facts[:'Part Number']
-    facts[:'Software Revision']        = facts[:'Software Revision']
-    facts[:'Serial Number']            = facts[:'Serial Number']
-    facts[:'Electronic Serial Number'] = facts[:'Electronic Serial Number']
-    facts[:'Mgmt mac']                 = facts[:'Mgmt mac']
-    facts[:'Machine Type Model']       = facts[:'Machine Type Model']
-    facts[:UpTime] = facts[:UpTime]
-
     facts.each do |key, value|
       Puppet.notice("Key  = #{key} , Value = #{value}")
     end
