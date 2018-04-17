@@ -7,35 +7,29 @@
 	"source": "https://github.com/lenovo/puppet-cnos",
 	"project_page": "https://github.com/lenovo/puppet-cnos",
 	"issues_url": "https://github.com/lenovo/puppet-cnos/issues",
-	"dependencies": [{
-		"name": "puppetlabs-stdlib",
-		"version_requirement": ">= 4.13.1 < 5.0.0"
-	}],
+	"dependencies": [
+		{
+			"name": "puppetlabs-stdlib",
+			"version_requirement": ">= 4.13.1 < 5.0.0"
+		}
+	],
 	"data_provider": null,
-	"requirements": [{
-		"name": "puppet",
-		"version_requirement": ">= 4.7.0 < 6.0.0"
-	}],
-	"operatingsystem_support": [{
-			"operatingsystem": "Ubuntu",
-			"operatingsystemrelease": [
-				"16.04"
-			]
-		},
+	"requirements": [
 		{
-			"operatingsystem": "windows",
-			"operatingsystemrelease": [
-				"2008 R2",
-				"2012 R2",
-				"10"
-			]
-		},
+			"name": "puppet",
+			"version_requirement": ">= 4.7.0 < 6.0.0"
+		}
+	],
+	"operatingsystem_support": [
 		{
-			"operatingsystem": "RedHat",
+			"operatingsystem": "CNOS",
 			"operatingsystemrelease": [
-				"5",
-				"6",
-				"7"
+				"10.1.X",
+				"10.2.X",
+				"10.3.X",
+				"10.4.X",
+				"10.5.X",
+				"10.6.X"
 			]
 		}
 	],
@@ -44,17 +38,6 @@
 		"cnos",
 		"network"
 	],
-	"network_operatingsystem_support": [{
-		"operatingsystem": "CNOS",
-		"operatingsystemrelease": [
-			"10.1.X",
-			"10.2.X",
-			"10.3.X",
-			"10.4.X",
-			"10.5.X",
-			"10.6.X"
-		]
-	}],
 	"pdk-version": "1.3.1",
 	"template-url": "file://C:/PROGRA~1/PUPPET~1/DevelopmentKit/share/cache/pdk-templates.git",
 	"template-ref": "1.3.0-0-g632fa63"
