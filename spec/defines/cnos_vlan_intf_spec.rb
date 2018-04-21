@@ -5,16 +5,16 @@ describe 'cnos_vlan_intf', type: :type do
 
   let :params do
     [
-      :name
+      :name,
     ]
   end
 
   let :properties do
-    %i[
-      if_name
-      bridgeport_mode
-      pvid
-      vlans
+    [
+      :if_name,
+      :bridgeport_mode,
+      :pvid,
+      :vlans,
     ]
   end
 
