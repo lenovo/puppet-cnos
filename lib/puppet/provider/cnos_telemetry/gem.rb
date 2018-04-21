@@ -44,7 +44,7 @@ Puppet::Type.type(:cnos_telemetry).provide(:gem, parent: Puppet::Provider::Cnos)
     Puppet.debug('I am inside prefetch')
     feature = instances
     resources.keys.each do |name|
-      if provider = feature.find { |_feature| TRUE }
+      if (provider = feature.find { |_feature| TRUE })
         Puppet.debug("Prefetch data coming here is #{provider}")
         resources[name].provider = provider
       end
@@ -52,7 +52,7 @@ Puppet::Type.type(:cnos_telemetry).provide(:gem, parent: Puppet::Provider::Cnos)
   end
 
   def params_setup
-    params = {}
+    # params = {}
     params =
       {
         'collection-interval'         => resource[:collection_interval],
@@ -61,14 +61,15 @@ Puppet::Type.type(:cnos_telemetry).provide(:gem, parent: Puppet::Provider::Cnos)
         'trigger-rate-limit'          => resource[:trigger_rate_limit],
         'async-full-report'           => resource[:async_full_report],
         'trigger-rate-limit-interval' => resource[:trigger_rate_limit_interval],
-        'bst-enable'                  => resource[:bst_enable]
+        'bst-enable'                  => resource[:bst_enable],
       }
     params
   end
 
   def exists?
     Puppet.debug('I am inside exists')
-    @property_hash[:ensure] == :present
+    # @property_hash[:ensure] == :present
+    @property_hash[:ensure].should be == :present
     true
   end
 
@@ -82,10 +83,10 @@ Puppet::Type.type(:cnos_telemetry).provide(:gem, parent: Puppet::Provider::Cnos)
     end
     @property_hash = resource.to_hash
   end
-  
+
   def destroy
     Puppet.debug('I am inside destroy')
-    params = {}
+    # params = {}
     params =
       {
         'collection-interval'         => 60,
