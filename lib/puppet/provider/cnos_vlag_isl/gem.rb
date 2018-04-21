@@ -26,21 +26,22 @@ Puppet::Type.type(:cnos_vlag_isl).provide(:gem, parent: Puppet::Provider::Cnos) 
 
   def exists?
     Puppet.debug('I am inside exists')
-    @property_hash[:ensure] == :present
+    @property_hash[:ensure].should be == :present
+    # @property_hash[:ensure] == :present
     # return true since resource is always present
     true
   end
 
   def flush
     Puppet.debug('I am inside flush')
-    params = {}
+    # params = {}
     if @property_hash != {}
       params = { 'port_aggregator' => resource[:port_aggregator] }
-      resp = Puppet::Provider::Cnos.update_vlag_isl(params)
+      Puppet::Provider::Cnos.update_vlag_isl(params)
     end
     @property_hash = resource.to_hash
   end
-  
+
   def destroy
     Puppet.debug('I am inside destroy')
     # This is not supported as of now
