@@ -14,7 +14,7 @@ class Puppet::Util::NetworkDevice::Cnos::Facts
 
   def parse_device_facts
     facts = {
-      operatingsystem: :cnos
+      operatingsystem: :cnos,
     }
     if response = @transport.call('/nos/api/sysinfo/inventory')
       Puppet.debug("response  = #{response}")
