@@ -5,7 +5,7 @@ describe 'cnos_vlag', type: :type do
 
   let :params do
     [
-      :name
+      :name,
     ]
   end
 
@@ -36,6 +36,6 @@ describe 'cnos_vlag', type: :type do
   end
 
   it 'should support :present as a value to :ensure' do
-    type_class.new(name: 'A great VLAG', inst_id: '2', ensure: :present)
+    type_class.new(name: '2', inst_id: '2', ensure: :present)
   end
 end
