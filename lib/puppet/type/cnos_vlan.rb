@@ -50,7 +50,7 @@ Puppet::Type.newtype(:cnos_vlan) do
 
   newproperty(:admin_state) do
     desc 'one of up or down'
-    
+
     validate do |value|
       super value
       raise('the name must be string representation of admin_state') if value != 'up' && value != 'down'
