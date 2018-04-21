@@ -5,17 +5,17 @@ describe 'cnos_vlag_conf', type: :type do
 
   let :params do
     [
-      :name
+      :name,
     ]
   end
 
   let :properties do
-    %i[
-      status
-      tier_id
-      priority
-      auto_recover
-      startup_delay
+    [
+      :status,
+      :tier_id,
+      :priority,
+      :auto_recover,
+      :startup_delay,
     ]
   end
 
