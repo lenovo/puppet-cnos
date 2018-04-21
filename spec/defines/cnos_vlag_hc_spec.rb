@@ -5,17 +5,17 @@ describe 'cnos_vlag_hc', type: :type do
 
   let :params do
     [
-      :name
+      :name,
     ]
   end
 
   let :properties do
-    %i[
-      peer_ip
-      vrf
-      keepalive_attempts
-      keepalive_interval
-      retry_interval
+    [
+      :peer_ip,
+      :vrf,
+      :keepalive_attempts,
+      :keepalive_interval,
+      :retry_interval,
     ]
   end
 
