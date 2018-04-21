@@ -16,12 +16,11 @@ require 'json'
 Puppet::Type.type(:cnos_ip_intf).provide(:gem, parent: Puppet::Provider::Cnos) do
   desc 'Manage IP interfaces on Lenovo CNOS. Requires cnos-rbapi'
 
- 
   mk_resource_methods
 
   def self.instances
     instances = []
-    
+
     resp = Puppet::Provider::Cnos.get_ip_prop_all
     return 'no ip_intf' unless resp
     resp.each do |item|
@@ -45,7 +44,7 @@ Puppet::Type.type(:cnos_ip_intf).provide(:gem, parent: Puppet::Provider::Cnos) d
     Puppet.debug('I am inside prefetch')
     ip_intfs = instances
     resources.keys.each do |name|
-      if provider = ip_intfs.find { |ip_intf| ip_intf.name == name }
+      if (provider = ip_intfs.find { |ip_intf| ip_intf.name == name })
         Puppet.debug("Prefetch data coming here is #{provider}")
         resources[name].provider = provider
       end
@@ -56,7 +55,7 @@ Puppet::Type.type(:cnos_ip_intf).provide(:gem, parent: Puppet::Provider::Cnos) d
     Puppet.debug('I am inside flush')
     if @property_hash
       params = params_setup
-      resp = Puppet::Provider::Cnos.update_ip_prop_intf(resource[:if_name], params)
+      Puppet::Provider::Cnos.update_ip_prop_intf(resource[:if_name], params)
     end
     @property_hash = resource.to_hash
   end
@@ -83,13 +82,13 @@ Puppet::Type.type(:cnos_ip_intf).provide(:gem, parent: Puppet::Provider::Cnos) d
     Puppet.debug('I am inside exists')
     @property_hash[:ensure] == :present
   end
-  
+
   def destroy
     Puppet.debug('I am inside destroy')
     params = params_setup
     params['mtu'] = 1500
-    params['bridge_port'] = 'no' 
-    resp = Puppet::Provider::Cnos.update_ip_prop_intf(resource[:if_name], params)
+    params['bridge_port'] = 'no'
+    Puppet::Provider::Cnos.update_ip_prop_intf(resource[:if_name], params)
     @property_hash.clear
   end
 end
