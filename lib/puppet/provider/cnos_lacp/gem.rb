@@ -52,7 +52,7 @@ Puppet::Type.type(:cnos_lacp).provide(:gem, parent: Puppet::Provider::Cnos) do
     Puppet.debug('I am inside destroy')
     params = {}
     params['sys_prio'] = 32_768
-    Puppet::Provider::Cnos.set_arp_sys_prop(params)
+    Puppet::Provider::Cnos.update_lacp(params)
     @property_hash.clear
   end
 end
