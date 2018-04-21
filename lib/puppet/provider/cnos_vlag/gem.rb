@@ -40,7 +40,7 @@ Puppet::Type.type(:cnos_vlag).provide(:gem, parent: Puppet::Provider::Cnos) do
     Puppet.debug('I am inside prefetch')
     vlags = instances
     resources.keys.each do |name|
-      if provider = vlags.find { |vlag| vlag.name == name }
+      if (provider = vlags.find { |vlag| vlag.name == name })
         Puppet.debug("Prefetch data coming here is #{provider}")
         resources[name].provider = provider
       end
@@ -60,7 +60,7 @@ Puppet::Type.type(:cnos_vlag).provide(:gem, parent: Puppet::Provider::Cnos) do
     if @property_hash
       Puppet.debug('I am inside flush')
       params = params_setup
-      resp = Puppet::Provider::Cnos.update_vlag_inst(resource[:inst_id], params)
+      Puppet::Provider::Cnos.update_vlag_inst(resource[:inst_id], params)
     end
     @property_hash = resource.to_hash
   end
