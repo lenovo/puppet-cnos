@@ -5,13 +5,13 @@ describe 'cnos_arp_sys', type: :type do
 
   let :params do
     [
-      :name
+      :name,
     ]
   end
 
   let :properties do
-    %i[
-      ageout_time
+    [
+      :ageout_time,
     ]
   end
 
