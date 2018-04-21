@@ -9,14 +9,16 @@ class Puppet::Util::NetworkDevice::Transport::Cnos < Puppet::Util::NetworkDevice
     Puppet.debug("url = #{url}")
 
     require 'cnos-rbapi'
-    array = url.split(/:/)
+    # array = url.split(/:/)
+    array = url.split(%r{:})
     transport = array[0]
     username = array[1]
     username = username[2, username.length]
-    innerarray = array[2].split(/@/)
+    # innerarray = array[2].split(/@/)
+    innerarray = array[2].split(%r{@})
     password = innerarray[0]
-    switchIP = innerarray[1]
-    switchIP = switchIP[0, switchIP.length - 1] if switchIP.chars.last == '/'
+    switch_ip = innerarray[1]
+    switch_ip = switch_ip[0, switch_ip.length - 1] if switch_ip.chars.last == '/'
     portnumber = '443'
     if array [3] != nil
       portnumber = array [3]
@@ -27,7 +29,7 @@ class Puppet::Util::NetworkDevice::Transport::Cnos < Puppet::Util::NetworkDevice
     params = {}
     params['transport'] = transport
     params['port'] = portnumber
-    params['ip'] = switchIP
+    params['ip'] = switch_ip
     params['user'] = username
     params['password'] = password
     @connection = Connect.new(params)
@@ -47,7 +49,7 @@ class Puppet::Util::NetworkDevice::Transport::Cnos < Puppet::Util::NetworkDevice
       Puppet.debug("Backtrace = #{e.backtrace.inspect}")
     end
   rescue JSON::ParserError
-    return nil
+
   end
 
   def failure?(result)
@@ -92,8 +94,8 @@ class Puppet::Util::NetworkDevice::Transport::Cnos < Puppet::Util::NetworkDevice
 
   def valid_json?(json)
     JSON.parse(json)
-    return true
+    true
   rescue
-    return false
+    false
   end
 end
