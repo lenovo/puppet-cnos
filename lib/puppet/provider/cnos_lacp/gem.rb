@@ -26,17 +26,17 @@ Puppet::Type.type(:cnos_lacp).provide(:gem, parent: Puppet::Provider::Cnos) do
 
   def exists?
     Puppet.debug('I am inside exists')
-    @property_hash[:ensure] == :present
+    @property_hash[:ensure].should be == :present
+    # @property_hash[:ensure] == :present
     # return true since resource is always present
     true
   end
 
   def flush
     Puppet.debug('I am inside flush')
-    params = {}
     if @property_hash != {}
       params = { 'sys_prio' => resource[:sys_prio] }
-      resp = Puppet::Provider::Cnos.update_lacp(params)
+      Puppet::Provider::Cnos.update_lacp(params)
     end
     @property_hash = resource.to_hash
   end
@@ -44,15 +44,15 @@ Puppet::Type.type(:cnos_lacp).provide(:gem, parent: Puppet::Provider::Cnos) do
   def create
     Puppet.debug('I am inside create')
     params = { 'sys_prio' => resource[:sys_prio] }
-    resp = Puppet::Provider::Cnos.update_lacp(params)
+    Puppet::Provider::Cnos.update_lacp(params)
     @property_hash.clear
   end
-  
+
   def destroy
     Puppet.debug('I am inside destroy')
     params = {}
-    params['sys_prio'] = 32768
-    resp = Puppet::Provider::Cnos.set_arp_sys_prop(params)
+    params['sys_prio'] = 32_768
+    Puppet::Provider::Cnos.set_arp_sys_prop(params)
     @property_hash.clear
   end
 end
