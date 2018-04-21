@@ -42,7 +42,7 @@ Puppet::Type.type(:cnos_vlan).provide(:gem, parent: Puppet::Provider::Cnos) do
     Puppet.debug('prefetch resource keys' + resources.keys.to_s)
     resources.keys.each do |name|
       Puppet.debug('prefetch vlan ' + vlans.first.to_s)
-      if provider = vlans.find { |vlan| vlan.name == name }
+      if (provider = vlans.find { |vlan| vlan.name == name })
         Puppet.debug("Prefetch data coming here is #{provider}")
         resources[name].provider = provider
       end
@@ -57,7 +57,7 @@ Puppet::Type.type(:cnos_vlan).provide(:gem, parent: Puppet::Provider::Cnos) do
       unless resource[:admin_state].nil?
         params['admin_state'] = resource[:admin_state]
       end
-      resp = Puppet::Provider::Cnos.update_vlan(resource[:vlan_id].to_i, params)
+      Puppet::Provider::Cnos.update_vlan(resource[:vlan_id].to_i, params)
     end
     @property_hash = resource.to_hash
   end
@@ -67,7 +67,7 @@ Puppet::Type.type(:cnos_vlan).provide(:gem, parent: Puppet::Provider::Cnos) do
     params = { 'vlan_id' => resource[:name].to_i,
                'vlan_name' => resource[:vlan_name],
                'admin_state' => resource[:admin_state] }
-    resp = Puppet::Provider::Cnos.create_vlan(params)
+    Puppet::Provider::Cnos.create_vlan(params)
     @property_hash.clear
   end
 
@@ -78,7 +78,7 @@ Puppet::Type.type(:cnos_vlan).provide(:gem, parent: Puppet::Provider::Cnos) do
 
   def destroy
     Puppet.debug('I am inside destroy' + resource[:vlan_id].to_s)
-    resp = Puppet::Provider::Cnos.delete_vlan(resource[:vlan_id].to_i)
+    Puppet::Provider::Cnos.delete_vlan(resource[:vlan_id].to_i)
     @property_hash.clear
   end
 end
