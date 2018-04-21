@@ -5,14 +5,14 @@ describe 'cnos_sys', type: :type do
 
   let :params do
     [
-      :sys_feature
+      :sys_feature,
     ]
   end
 
   let :properties do
-    %i[
-      heartbeat_enable
-      msg_interval
+    [
+      :heartbeat_enable,
+      :msg_interval,
     ]
   end
 
