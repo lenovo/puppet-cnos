@@ -16,7 +16,6 @@ require 'json'
 Puppet::Type.type(:cnos_telemetry_track).provide(:gem, parent: Puppet::Provider::Cnos) do
   desc 'Manage BST Tracking on Lenovo CNOS. Requires cnos-rbapi'
 
-  # confine operatingsystem: [:ubuntu]
   mk_resource_methods
 
   def track_device
@@ -88,7 +87,7 @@ Puppet::Type.type(:cnos_telemetry_track).provide(:gem, parent: Puppet::Provider:
         'track-peak-stats'                  => resource[:track_peak_stats],
         'track-ingress-port-priority-group' => resource[:track_ingress_port_priority_group],
         'track-egress-service-pool'         => resource[:track_egress_service_pool],
-        'track-device'                      => resource[:track_device]
+        'track-device'                      => resource[:track_device],
       }
     params
   end
@@ -105,7 +104,7 @@ Puppet::Type.type(:cnos_telemetry_track).provide(:gem, parent: Puppet::Provider:
 
   def track_egress_uc_queue=(_value)
     params = params_setup
-    resp = Puppet::Provider::Cnos.set_bst_tracking(params)
+    Puppet::Provider::Cnos.set_bst_tracking(params)
   end
 
   def track_egress_rqe_queue=(_value)
@@ -115,12 +114,12 @@ Puppet::Type.type(:cnos_telemetry_track).provide(:gem, parent: Puppet::Provider:
 
   def track_egress_cpu_queue=(_value)
     params = params_setup
-    resp = Puppet::Provider::Cnos.set_bst_tracking(params)
+    Puppet::Provider::Cnos.set_bst_tracking(params)
   end
 
   def track_ingress_port_service_pool=(_value)
     params = params_setup
-    resp = Puppet::Provider::Cnos.set_bst_tracking(params)
+    Puppet::Provider::Cnos.set_bst_tracking(params)
   end
 
   def track_ingress_service_pool=(_value)
@@ -147,16 +146,17 @@ Puppet::Type.type(:cnos_telemetry_track).provide(:gem, parent: Puppet::Provider:
     params = params_setup
     Puppet::Provider::Cnos.set_bst_tracking(params)
   end
-  
+
   def exists?
     Puppet.debug('I am inside exists')
-    @property_hash[:ensure] == :present
+    # @property_hash[:ensure] == :present
+    @property_hash[:ensure].should be == :present
     true
   end
-  
+
   def destroy
     Puppet.debug('I am inside destroy')
-    params = {}
+    # params = {}
     params =
       {
         'track-egress-port-service-pool'    => 1,
@@ -174,5 +174,4 @@ Puppet::Type.type(:cnos_telemetry_track).provide(:gem, parent: Puppet::Provider:
     Puppet::Provider::Cnos.set_bst_tracking(params)
     @property_hash.clear
   end
-
 end
