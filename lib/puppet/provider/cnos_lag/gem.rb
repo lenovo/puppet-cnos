@@ -22,35 +22,36 @@ Puppet::Type.type(:cnos_lag).provide(:gem, parent: Puppet::Provider::Cnos) do
   def params_setup
     params = {}
     params['lag_id'] = resource[:lag_id]
-    if resource[:min_links] != nil
+    # if resource[:min_links] != nil
+    if !resource[:min_links].nil?
       params['min_links'] = resource[:min_links]
     end
-    if resource[:interfaces] != nil
+    if !resource[:interfaces].nil?
       params['interfaces'] = resource[:interfaces]
     end
     params
   end
 
   def interfaces
-    params = params_setup
+    params_setup
     resp = Puppet::Provider::Cnos.get_lag_prop(resource[:lag_id])
     resp['interfaces']
   end
 
   def min_links
-    params = params_setup
+    params_setup
     resp = Puppet::Provider::Cnos.get_lag_prop(resource[:lag_id])
     resp['min_links']
   end
 
-  def min_links=(value)
-    params = params_setup
-    resp = Puppet::Provider::Cnos.get_lag_prop(resource[:lag_id])
+  def min_links=(*)
+    params_setup
+    Puppet::Provider::Cnos.get_lag_prop(resource[:lag_id])
   end
 
-  def interfaces=(value)
-    params = params_setup
-    resp = Puppet::Provider::Cnos.update_lag(resource[:lag_id], params)
+  def interfaces=(*)
+    params_setup
+    Puppet::Provider::Cnos.update_lag(resource[:lag_id], params)
   end
 
   def create
