@@ -25,7 +25,7 @@ Puppet::Type.newtype(:cnos_arp) do
   # Parameters
   newparam(:name, namevar: true) do
     desc 'Ethernet interface name'
-    
+
     validate do |value|
       super value
       raise('the name must be string representation of interface name') if value.size > 64
@@ -35,7 +35,7 @@ Puppet::Type.newtype(:cnos_arp) do
   # Properties
   newproperty(:if_name) do
     desc 'Ethernet interface name'
-    
+
     validate do |value|
       super value
       raise('the name must be string representation of interface name') if value.size > 64
@@ -46,7 +46,7 @@ Puppet::Type.newtype(:cnos_arp) do
     desc 'integer from 60-28800'
 
     validate do |value|
-      raise 'value not within limit (60-28800)' unless value.to_i.between?(60, 28800)
+      raise 'value not within limit (60-28800)' unless value.to_i.between?(60, 28_800)
     end
     munge(&:to_i)
   end
