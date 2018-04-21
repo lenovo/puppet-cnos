@@ -108,7 +108,7 @@ Puppet::Type.newtype(:cnos_vrrp) do
   newproperty(:track_if) do
     desc 'Interface name'
 
-     validate do |value|
+    validate do |value|
       super value
       raise('the name must be string representation of interface name') if value.size > 64
     end
@@ -116,7 +116,7 @@ Puppet::Type.newtype(:cnos_vrrp) do
 
   newproperty(:accept_mode) do
     desc 'one of yes or no'
-    #newvalues('yes', 'no')
+    # newvalues('yes', 'no')
     validate do |value|
       super value
       raise('the name must be string representation of admin_state') if value != 'yes' && value != 'no'
@@ -125,7 +125,7 @@ Puppet::Type.newtype(:cnos_vrrp) do
 
   newproperty(:v2_compt) do
     desc 'one of yes, no'
-    
+
     validate do |value|
       super value
       raise('the name must be string representation of admin_state') if value != 'yes' && value != 'no'
