@@ -5,13 +5,13 @@ describe 'cnos_lacp', type: :type do
 
   let :params do
     [
-      :name
+      :name,
     ]
   end
 
   let :properties do
-    %i[
-      sys_prio
+    [
+      :sys_prio,
     ]
   end
 
