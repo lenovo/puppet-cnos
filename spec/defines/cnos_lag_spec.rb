@@ -5,12 +5,13 @@ describe 'cnos_lag', type: :type do
 
   let :params do
     [
-      :lag_id
+      :name
     ]
   end
 
   let :properties do
     %i[
+      lag_id
       interfaces
       min_links
     ]
