@@ -62,7 +62,7 @@ Puppet::Type.type(:cnos_vlag_hc).provide(:gem, parent: Puppet::Provider::Cnos) d
       unless resource[:keepalive_attempts].nil?
         params['keepalive_attempts'] = resource[:keepalive_attempts]
       end
-      resp = Puppet::Provider::Cnos.update_vlag_health(params)
+      Puppet::Provider::Cnos.update_vlag_health(params)
     end
     @property_hash = resource.to_hash
   end
