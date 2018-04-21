@@ -48,7 +48,7 @@ Puppet::Type.type(:cnos_vrrp).provide(:gem, parent: Puppet::Provider::Cnos) do
     vrrps = instances
     resources.keys.each do |name|
       Puppet.debug('prefetch vrrps ' + vrrps.first.to_s)
-      if provider = vrrps.find { |vrrp| vrrp.name == name }
+      if (provider = vrrps.find { |vrrp| vrrp.name == name })
         Puppet.debug('prefetch vrrp ' + vlans.first.to_s)
         resources[name].provider = provider
       end
@@ -81,7 +81,7 @@ Puppet::Type.type(:cnos_vrrp).provide(:gem, parent: Puppet::Provider::Cnos) do
     Puppet.debug('I am inside flush')
     if @property_hash != {}
       params = params_setup
-      resp = Puppet::Provider::Cnos.update_vrrp_intf_vrid(resource[:if_name], resource[:vr_id], params)
+      Puppet::Provider::Cnos.update_vrrp_intf_vrid(resource[:if_name], resource[:vr_id], params)
     end
     @property_hash = resource.to_hash
   end
@@ -89,7 +89,7 @@ Puppet::Type.type(:cnos_vrrp).provide(:gem, parent: Puppet::Provider::Cnos) do
   def create
     Puppet.debug('I am inside create')
     params = params_setup
-    resp = Puppet::Provider::Cnos.create_vrrp_intf(resource[:if_name], params)
+    Puppet::Provider::Cnos.create_vrrp_intf(resource[:if_name], params)
     @property_hash.clear
   end
 
@@ -100,7 +100,7 @@ Puppet::Type.type(:cnos_vrrp).provide(:gem, parent: Puppet::Provider::Cnos) do
 
   def destroy
     Puppet.debug('I am inside destroy')
-    resp = Puppet::Provider::Cnos.del_vrrp_intf_vrid(resource[:if_name], resource[:vr_id])
+    Puppet::Provider::Cnos.del_vrrp_intf_vrid(resource[:if_name], resource[:vr_id])
     @property_hash.clear
   end
 end
