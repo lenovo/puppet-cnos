@@ -14,7 +14,7 @@ class Puppet::Util::NetworkDevice::Cnos::Device
 
     @autoloader = Puppet::Util::Autoload.new(
       self,
-      'puppet/util/network_device/transport'
+      'puppet/util/network_device/transport',
     )
     if @autoloader.load('cnos')
       @transport = Puppet::Util::NetworkDevice::Transport::Cnos.new(url, options[:debug])
