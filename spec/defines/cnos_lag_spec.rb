@@ -36,6 +36,6 @@ describe 'cnos_lag', type: :type do
   end
 
   it 'should support :present as a value to :ensure' do
-    type_class.new(name: 'The LAG details ', lag_id: '11', ensure: :present)
+    type_class.new(name: '11', lag_id: '11', ensure: :present)
   end
 end
