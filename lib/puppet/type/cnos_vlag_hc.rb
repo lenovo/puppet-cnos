@@ -28,7 +28,7 @@ Puppet::Type.newtype(:cnos_vlag_hc) do
   # Parameters
   newparam(:name, namevar: true) do
     desc 'name of parameter'
-    
+
     validate do |value|
       super value
       raise('the name must be between 1 and 64 characters long') if value.size > 64
@@ -38,7 +38,7 @@ Puppet::Type.newtype(:cnos_vlag_hc) do
   # Properties
   newproperty(:peer_ip) do
     desc 'ip address'
-    
+
     validate do |value|
       super value
       raise('the name must be string representation of ip address') if value.size > 11
@@ -47,7 +47,7 @@ Puppet::Type.newtype(:cnos_vlag_hc) do
 
   newproperty(:vrf) do
     desc 'vrf context string'
-    
+
     validate do |value|
       super value
       raise('VRF context string must be between 1 and 64 characters long') if value.size > 64
