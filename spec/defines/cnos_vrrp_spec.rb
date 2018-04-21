@@ -10,18 +10,18 @@ describe 'cnos_vrrp', type: :type do
   end
 
   let :properties do
-    %i[
-      vr_id
-      if_name
-      ip_addr
-      ad_intvl
-      preempt
-      prio
-      admin_state
-      track_if
-      accept_mode
-      v2_compt
-      switch_back_delay
+    [
+      :vr_id,
+      :if_name,
+      :ip_addr,
+      :ad_intvl,
+      :preempt,
+      :prio,
+      :admin_state,
+      :track_if,
+      :accept_mode,
+      :v2_compt,
+      :switch_back_delay,
     ]
   end
 
