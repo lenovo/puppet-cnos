@@ -5,20 +5,20 @@ describe 'cnos_telemetry', type: :type do
 
   let :params do
     [
-      :bst_feature
+      :bst_feature,
     ]
   end
 
   let :properties do
-    %i[
-      bst_enable
-      send_async_reports
-      async_full_report
-      collection_interval
-      trigger_rate_limit
-      trigger_rate_limit_interval
-      send_snapshot_on_trigger
-      async_full_reports
+    [
+      :bst_enable,
+      :send_async_reports,
+      :async_full_report,
+      :collection_interval,
+      :trigger_rate_limit,
+      :trigger_rate_limit_interval,
+      :send_snapshot_on_trigger,
+      :async_full_reports,
     ]
   end
 
