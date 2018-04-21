@@ -21,7 +21,7 @@ Puppet::Type.newtype(:cnos_sys) do
 
   apply_to_device
   ensurable
-	
+
   # Parameters
   newparam(:sys_feature, namevar: true) do
     desc 'setting system feature - should be "sys"'
@@ -31,11 +31,11 @@ Puppet::Type.newtype(:cnos_sys) do
   # Properties
   newproperty(:heartbeat_enable) do
     desc '0/1 for enable or disable'
-    
+
     munge(&:to_i)
 
     validate do |value|
-      raise 'value not within limit (1-600)' unless value.to_i >=0 && value.to_i < 2
+      raise 'value not within limit (1-600)' unless value.to_i >= 0 && value.to_i < 2
     end
   end
 
