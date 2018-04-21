@@ -5,12 +5,13 @@ describe 'cnos_vrrp', type: :type do
 
   let :params do
     [
-      :vr_id
+      :name,
     ]
   end
 
   let :properties do
     %i[
+      vr_id
       if_name
       ip_addr
       ad_intvl
@@ -43,6 +44,6 @@ describe 'cnos_vrrp', type: :type do
   end
 
   it 'should support :present as a value to :ensure' do
-    type_class.new(name: 'VRRP Configuration has', vr_id: '1', ensure: :present)
+    type_class.new(name: '1', vr_id: '1', ensure: :present)
   end
 end
