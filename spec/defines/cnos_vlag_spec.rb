@@ -10,10 +10,10 @@ describe 'cnos_vlag', type: :type do
   end
 
   let :properties do
-    %i[
-      inst_id
-      port_aggregator
-      status
+    [
+      :inst_id,
+      :port_aggregator,
+      :status,
     ]
   end
 
