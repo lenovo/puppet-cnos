@@ -5,7 +5,7 @@ describe 'cnos_lacp', type: :type do
 
   let :params do
     [
-      :title
+      :name
     ]
   end
 
