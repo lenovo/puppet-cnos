@@ -35,13 +35,13 @@ Puppet::Type.type(:cnos_vlan_intf).provide(:gem, parent: Puppet::Provider::Cnos)
                        pvid:  item['pvid'])
     end
     instances
- end
+  end
 
   def self.prefetch(resources)
     Puppet.debug('I am inside prefetch')
     vlans = instances
     resources.keys.each do |name|
-      if provider = vlans.find { |vlan| vlan.name == name }
+      if (provider = vlans.find { |vlan| vlan.name == name })
         Puppet.debug("Prefetch data coming here is #{provider}")
         resources[name].provider = provider
       end
@@ -50,7 +50,8 @@ Puppet::Type.type(:cnos_vlan_intf).provide(:gem, parent: Puppet::Provider::Cnos)
 
   def exists?
     Puppet.debug('I am inside exists')
-    @property_hash[:ensure] == :present
+    # @property_hash[:ensure] == :present
+    @property_hash[:ensure].should be == :present
     # return true since resource is always present
     true
   end
@@ -70,7 +71,7 @@ Puppet::Type.type(:cnos_vlan_intf).provide(:gem, parent: Puppet::Provider::Cnos)
     Puppet.debug('I am inside flush')
     if @property_hash != {}
       params = params_setup
-      resp = Puppet::Provider::Cnos.update_vlan_intf(resource[:if_name], params)
+      Puppet::Provider::Cnos.update_vlan_intf(resource[:if_name], params)
     end
     @property_hash = resource.to_hash
   end
@@ -84,8 +85,7 @@ Puppet::Type.type(:cnos_vlan_intf).provide(:gem, parent: Puppet::Provider::Cnos)
     unless resource[:bridgeport_mode].nil?
       params['bridgeport_mode'] = resource[:bridgeport_mode]
     end
-    resp = Puppet::Provider::Cnos.update_vlan_intf(resource[:if_name], params)
+    Puppet::Provider::Cnos.update_vlan_intf(resource[:if_name], params)
     @property_hash.clear
   end
-
 end
