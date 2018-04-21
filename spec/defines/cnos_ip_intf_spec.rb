@@ -5,12 +5,13 @@ describe 'cnos_ip_intf', type: :type do
 
   let :params do
     [
-      :if_name
+      :name
     ]
   end
 
   let :properties do
     %i[
+      if_name
       vrf_name
       bridge_port
       mtu
