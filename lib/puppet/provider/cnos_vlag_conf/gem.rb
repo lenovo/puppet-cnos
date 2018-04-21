@@ -39,7 +39,7 @@ Puppet::Type.type(:cnos_vlag_conf).provide(:gem, parent: Puppet::Provider::Cnos)
     Puppet.debug('I am inside prefetch')
     vlag = instances
     resources.keys.each do |name|
-      if provider = vlag.find { |_vlag| true }
+      if (provider = vlag.find { |_vlag| true })
         Puppet.debug("Prefetch data coming here is #{provider}")
         resources[name].provider = provider
       end
@@ -60,14 +60,15 @@ Puppet::Type.type(:cnos_vlag_conf).provide(:gem, parent: Puppet::Provider::Cnos)
       unless resource[:startup_delay].nil?
         params['startup_delay'] = resource[:startup_delay]
       end
-      resp = Puppet::Provider::Cnos.update_vlag_conf(params)
+      Puppet::Provider::Cnos.update_vlag_conf(params)
     end
     @property_hash = resource.to_hash
   end
 
   def exists?
     Puppet.debug('I am inside exists')
-    @property_hash[:ensure] == :present
+    # @property_hash[:ensure] == :present
+    @property_hash[:ensure].should be == :present
     true
   end
 
@@ -79,7 +80,7 @@ Puppet::Type.type(:cnos_vlag_conf).provide(:gem, parent: Puppet::Provider::Cnos)
     params['priority'] = 0
     params['auto_recover'] = 300
     params['startup_delay'] = 120
-    resp = Puppet::Provider::Cnos.update_vlag_conf(params)
+    Puppet::Provider::Cnos.update_vlag_conf(params)
     @property_hash.clear
   end
 end
