@@ -34,7 +34,7 @@ Puppet::Type.newtype(:cnos_lacp) do
     munge(&:to_i)
 
     validate do |value|
-      unless value.to_i.between?(1, 65535)
+      unless value.to_i.between?(1, 65_535)
         raise 'value not within limit (1-65535)'
       end
     end
