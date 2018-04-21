@@ -58,7 +58,7 @@ Puppet::Type.newtype(:cnos_ip_intf) do
 
   newproperty(:bridge_port) do
     desc 'one of yes/no'
-	  
+
     validate do |value|
       super value
       raise('the value must be yes or no') if value != 'yes' && value != 'no'
