@@ -49,10 +49,10 @@ Puppet::Type.newtype(:cnos_vrrp) do
       raise 'value not within limit (1-255)' unless value.to_i.between?(1, 255)
     end
   end
-  
+
   newproperty(:if_name) do
     desc 'Interface name'
-    
+
     validate do |value|
       super value
       raise('the name must be string representation of interface name') if value.size > 64
@@ -61,7 +61,7 @@ Puppet::Type.newtype(:cnos_vrrp) do
 
   newproperty(:ip_addr) do
     desc 'string 32 characters long'
-    
+
     validate do |value|
       super value
       raise('the name must be string representation of interface name') if value.size > 11
@@ -79,7 +79,7 @@ Puppet::Type.newtype(:cnos_vrrp) do
   end
   newproperty(:preempt) do
     desc 'one of yes or no'
-    
+
     validate do |value|
       super value
       raise('the name must be string representation of admin_state') if value != 'yes' && value != 'no'
@@ -98,7 +98,7 @@ Puppet::Type.newtype(:cnos_vrrp) do
 
   newproperty(:admin_state) do
     desc 'one of up or down'
-    
+
     validate do |value|
       super value
       raise('the name must be string representation of admin_state') if value != 'up' && value != 'down'
@@ -107,7 +107,7 @@ Puppet::Type.newtype(:cnos_vrrp) do
 
   newproperty(:track_if) do
     desc 'Interface name'
-    
+
      validate do |value|
       super value
       raise('the name must be string representation of interface name') if value.size > 64
