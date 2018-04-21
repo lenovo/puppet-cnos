@@ -15,17 +15,17 @@ Puppet::Type.newtype(:cnos_vrrp) do
 
             Example:
              cnos_vrrp {name:
-                         'vr_id': '<vr_id>',
-                         'if_name' : '<if_name>'
-                         'ip_addr': '<ip_addr>',
-                         'ad_intvl': '<ad_intvl>',
-                         'preempt': '<preempt>',
-                         'prio': '<prio>',
-                         'admin_state': '<admin_state>',
-                         'track_if': '<track_if>',
-                         'accept_mode': '<accept_mode>',
-                         'switch_back_delay': '<switch_back_delay>',
-                         'v2_compt': '<v2_compt>'
+                         vr_id: "<vr_id>",
+                         if_name : "<if_name>",
+                         ip_addr: "<ip_addr>",
+                         ad_intvl: "<ad_intvl>",
+                         preempt: "<preempt>",
+                         prio: "<prio>",
+                         admin_state: "<admin_state>",
+                         track_if: "<track_if>",
+                         accept_mode: "<accept_mode>",
+                         switch_back_delay: "<switch_back_delay>",
+                         v2_compt: "<v2_compt>",
                        }
            }'
   apply_to_device
