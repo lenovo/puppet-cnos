@@ -11,7 +11,7 @@ describe 'cnos_vlag_isl', type: :type do
 
   let :properties do
     [
-      port_aggregator,
+      :port_aggregator,
     ]
   end
 
