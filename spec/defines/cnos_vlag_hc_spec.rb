@@ -25,6 +25,7 @@ describe 'cnos_vlag_hc', type: :type do
     end
   }
 
+
   it 'should have expected parameters' do
     params.each do |param|
       expect(type_class.parameters).to be_include(param)
