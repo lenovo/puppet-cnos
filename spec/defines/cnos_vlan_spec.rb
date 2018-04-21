@@ -5,15 +5,15 @@ describe 'cnos_vlan', type: :type do
 
   let :params do
     [
-      :name
+      :name,
     ]
   end
 
   let :properties do
-    %i[
-      vlan_id
-      vlan_name
-      admin_state
+    [
+      :vlan_id,
+      :vlan_name,
+      :admin_state,
     ]
   end
 
