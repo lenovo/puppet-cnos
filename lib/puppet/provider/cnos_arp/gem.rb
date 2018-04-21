@@ -47,13 +47,13 @@ Puppet::Type.type(:cnos_arp).provide(:gem, parent: Puppet::Provider::Cnos) do
     resp = Puppet::Provider::Cnos.set_arp_intf_prop(resource[:name], params)
     @property_hash.clear
   end
-  
+
   def destroy
     Puppet.debug('I am inside destroy')
     params = {}
     params['if_name'] = resource[:name]
     params['ageout_time'] = 1500
-    resp = Puppet::Provider::Cnos.set_arp_intf_prop(resource[:name], params)
+    Puppet::Provider::Cnos.set_arp_intf_prop(resource[:name], params)
     @property_hash.clear
   end
 end
