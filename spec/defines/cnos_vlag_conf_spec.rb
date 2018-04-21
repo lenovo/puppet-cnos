@@ -34,7 +34,7 @@ describe 'cnos_vlag_conf', type: :type do
   it 'should require a name' do
     expect do
       type_class.new({})
-    end.to raise_error(Puppet::Error, 'title or name must be provided')
+    end.to raise_error(Puppet::Error, 'Title or name must be provided')
   end
 
   it 'should support :present as a value to :ensure' do
