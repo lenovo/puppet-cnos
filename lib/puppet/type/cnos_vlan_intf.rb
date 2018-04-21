@@ -27,7 +27,7 @@ Puppet::Type.newtype(:cnos_vlan_intf) do
   # Parameters
   newparam(:name, namevar: true) do
     desc 'Ethernet interface name'
-    
+
     validate do |value|
       super value
       raise('the name must be string representation of interface name') if value.size > 64
@@ -37,7 +37,7 @@ Puppet::Type.newtype(:cnos_vlan_intf) do
   # Properties
   newproperty(:if_name) do
     desc 'Ethernet interface name'
-    
+
     validate do |value|
       super value
       raise('the name must be string representation of interface name') if value.size > 64
