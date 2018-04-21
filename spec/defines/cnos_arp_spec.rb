@@ -5,7 +5,7 @@ describe 'cnos_arp', type: :type do
 
   let :params do
     [
-      :if_name
+      :name
     ]
   end
 
