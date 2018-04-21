@@ -20,7 +20,7 @@ Puppet::Type.newtype(:cnos_vlag_isl) do
            }'
   apply_to_device
   ensurable
-	
+
   # Parameters
   newparam(:name, namevar: true) do
     desc 'name of parameter'
