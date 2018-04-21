@@ -5,13 +5,13 @@ describe 'cnos_vlag_isl', type: :type do
 
   let :params do
     [
-      :name
+      :name,
     ]
   end
 
   let :properties do
-    %i[
-      port_aggregator
+    [
+      port_aggregator,
     ]
   end
 
