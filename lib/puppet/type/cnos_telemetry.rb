@@ -38,7 +38,7 @@ Puppet::Type.newtype(:cnos_telemetry) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
-    
+
     validate do |value|
       raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
     end
@@ -48,7 +48,7 @@ Puppet::Type.newtype(:cnos_telemetry) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
-    
+
     validate do |value|
       raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
     end
@@ -58,7 +58,7 @@ Puppet::Type.newtype(:cnos_telemetry) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
-    
+
     validate do |value|
       raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
     end
@@ -94,7 +94,7 @@ Puppet::Type.newtype(:cnos_telemetry) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
-    
+
     validate do |value|
       raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
     end
@@ -104,7 +104,7 @@ Puppet::Type.newtype(:cnos_telemetry) do
     desc '0/1 for enable or disable'
 
     munge(&:to_i)
-    
+
     validate do |value|
       raise 'value either 0 or 1' unless value.to_i != 0 && value.to_i != 1
     end
