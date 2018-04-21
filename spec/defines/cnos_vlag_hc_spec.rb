@@ -5,7 +5,7 @@ describe 'cnos_vlag_hc', type: :type do
 
   let :params do
     [
-      :title
+      :name
     ]
   end
 
