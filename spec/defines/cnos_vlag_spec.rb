@@ -5,12 +5,13 @@ describe 'cnos_vlag', type: :type do
 
   let :params do
     [
-      :inst_id
+      :name
     ]
   end
 
   let :properties do
     %i[
+      inst_id
       port_aggregator
       status
     ]
