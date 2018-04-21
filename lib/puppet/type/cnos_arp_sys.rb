@@ -34,7 +34,7 @@ Puppet::Type.newtype(:cnos_arp_sys) do
     munge(&:to_i)
 
     validate do |value|
-      unless value.to_i.between?(60, 28800)
+      unless value.to_i.between?(60, 28_800)
         raise 'value not within limit (60-28800)'
       end
     end
