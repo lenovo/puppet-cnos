@@ -35,12 +35,12 @@ class Puppet::Provider::Cnos < Puppet::Provider
   end
 
   # System methods start here
-  def self.sys_feature
+  def self.fetch_sys_feature
     resp = Telemetry.get_sys_feature(connection)
     resp
   end
 
-  def self.set_sys_feature(params)
+  def self.config_sys_feature(params)
     resp = Telemetry.set_sys_feature(connection, params)
     resp
   end
