@@ -23,10 +23,10 @@ Puppet::Type.type(:cnos_lag).provide(:gem, parent: Puppet::Provider::Cnos) do
     params = {}
     params['lag_id'] = resource[:lag_id]
     # if resource[:min_links] != nil
-    if !resource[:min_links].nil?
+    unless resource[:min_links].nil?
       params['min_links'] = resource[:min_links]
     end
-    if !resource[:interfaces].nil?
+    unless resource[:interfaces].nil?
       params['interfaces'] = resource[:interfaces]
     end
     params
