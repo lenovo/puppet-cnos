@@ -32,7 +32,7 @@ class Puppet::Util::NetworkDevice::Transport::Cnos < Puppet::Util::NetworkDevice
     switch_ip = innerarray[1]
     switch_ip = switch_ip[0, switch_ip.length - 1] if switch_ip.chars.last == '/'
     portnumber = '443'
-    if !array [3].nil?
+    unless array [3].nil?
       portnumber = array [3]
       if portnumber.chars.last == '/'
         portnumber = portnumber[0, portnumber.length - 1]
@@ -56,7 +56,7 @@ class Puppet::Util::NetworkDevice::Transport::Cnos < Puppet::Util::NetworkDevice
       Puppet.debug("response  = #{response}")
       Puppet.debug("result = #{result.inspect}")
       return response
-    rescue Exception => e
+    rescue StandardError => e
       Puppet.debug("Error Message = #{e.message}")
       Puppet.debug("Backtrace = #{e.backtrace.inspect}")
     end
