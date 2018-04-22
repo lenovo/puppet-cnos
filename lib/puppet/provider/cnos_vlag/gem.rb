@@ -21,7 +21,7 @@ Puppet::Type.type(:cnos_vlag).provide(:gem, parent: Puppet::Provider::Cnos) do
 
   def self.instances
     instances = []
-    resp = Puppet::Provider::Cnos.get_all_vlag
+    resp = Puppet::Provider::Cnos.fetch_all_vlag
     return 'no vlags' unless resp
     resp.each do |item|
       Puppet.debug('VLag Id is ' + item['inst_id'].to_s)
