@@ -21,7 +21,7 @@ Puppet::Type.type(:cnos_vlan_intf).provide(:gem, parent: Puppet::Provider::Cnos)
   def self.instances
     Puppet.debug('I am inside instances')
     instances = []
-    resp = Puppet::Provider::Cnos.get_all_vlan_intf
+    resp = Puppet::Provider::Cnos.fetch_all_vlan_intf
     return 'no vlans' unless resp
     resp.each do |item|
       Puppet.debug('Interface Name is ' + item['if_name'].to_s)
