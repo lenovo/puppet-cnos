@@ -51,12 +51,12 @@ Puppet::Type.type(:cnos_telemetry_track).provide(:gem, parent: Puppet::Provider:
   def track_egress_service_pool
     resp = Puppet::Provider::Cnos.fetch_bst_tracking
     resp['track-egress-service-pool']
-  endfetch
+  end
 
   def track_ingress_service_pool
     resp = Puppet::Provider::Cnos.fetch_bst_tracking
     resp['track-ingress-service-pool']
-fetchnd
+  end
 
   def track_ingress_port_service_pool
     resp = Puppet::Provider::Cnos.fetch_bst_tracking
