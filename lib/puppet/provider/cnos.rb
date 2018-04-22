@@ -229,7 +229,7 @@ end
   end
 
   def self.update_vlan_intf(if_name, params)
-    resp = VlanIntf.update_vlan_intf(connection, if_name, params)
+    VlanIntf.update_vlan_intf(connection, if_name, params)
   end
 
   # Generic methods starts here``
@@ -239,9 +239,8 @@ end
   end
 
   def self.call_items(url, args = { 'expandSubcollections' => 'true' })
-    if call = transport.call(url, args)
+    if (call = transport.call(url, args))
       call
-      # call['item']
     end
   end
 
@@ -264,4 +263,5 @@ end
   def self.find_monitors(string)
     transport.find_monitors(string)
   end
-end # End of class
+end
+# End of class
