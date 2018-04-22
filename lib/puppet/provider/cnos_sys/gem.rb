@@ -20,29 +20,29 @@ Puppet::Type.type(:cnos_sys).provide(:gem, parent: Puppet::Provider::Cnos) do
   mk_resource_methods
 
   def heartbeat_enable
-    resp = Puppet::Provider::Cnos.sys_feature
+    resp = Puppet::Provider::Cnos.fetch_sys_feature
     resp['heartbeat-enable']
   end
 
   def msg_interval
-    resp = Puppet::Provider::Cnos.sys_feature
+    resp = Puppet::Provider::Cnos.fetch_sys_feature
     resp['msg-interval']
   end
 
   def heartbeat_enable=(_value)
     params = { 'heartbeat-enable' => resource[:heartbeat_enable],
                'msg-interval' => resource[:msg_interval] }
-    Puppet::Provider::Cnos.set_sys_feature(params)
+    Puppet::Provider::Cnos.config_sys_feature(params)
   end
 
   def msg_interval=(_value)
     params = { 'heartbeat-enable' => resource[:heartbeat_enable],
                'msg-interval' => resource[:msg_interval] }
-    Puppet::Provider::Cnos.set_sys_feature(params)
+    Puppet::Provider::Cnos.config_sys_feature(params)
   end
 
   def exists?
-    resp = Puppet::Provider::Cnos.sys_feature
+    resp = Puppet::Provider::Cnos.fetch_sys_feature
     resp != nil
   end
 
@@ -51,7 +51,7 @@ Puppet::Type.type(:cnos_sys).provide(:gem, parent: Puppet::Provider::Cnos) do
     params = {}
     params['heartbeat-enable'] = 1
     params['msg-interval'] = 5
-    Puppet::Provider::Cnos.set_sys_feature(params)
+    Puppet::Provider::Cnos.config_sys_feature(params)
     @property_hash.clear
   end
 end
