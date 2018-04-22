@@ -21,7 +21,7 @@ Puppet::Type.type(:cnos_ip_intf).provide(:gem, parent: Puppet::Provider::Cnos) d
   def self.instances
     instances = []
 
-    resp = Puppet::Provider::Cnos.get_ip_prop_all
+    resp = Puppet::Provider::Cnos.fetch_ip_prop_all
     return 'no ip_intf' unless resp
     resp.each do |item|
       Puppet.debug('Interface Name is ' + item['if_name'].to_s)
