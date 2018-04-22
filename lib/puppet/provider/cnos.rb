@@ -95,7 +95,7 @@ class Puppet::Provider::Cnos < Puppet::Provider
   end
 
   # Interface Methods start here
-  def self.get_ip_prop_all
+  def self.fetch_ip_prop_all
     resp = Ipintf.get_ip_prop_all(connection)
     resp
   end
