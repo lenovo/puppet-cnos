@@ -116,12 +116,12 @@ class Puppet::Provider::Cnos < Puppet::Provider
     resp
   end
 
-  def self.get_arp_sys_prop
+  def self.fetch_arp_sys_prop
     resp = Arp.get_arp_sys_prop(connection)
     resp
   end
 
-  def self.set_arp_sys_prop(params)
+  def self.config_arp_sys_prop(params)
     resp = Arp.set_arp_sys_prop(connection, params)
     resp
   end
