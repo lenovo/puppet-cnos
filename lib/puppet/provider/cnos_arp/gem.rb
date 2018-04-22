@@ -26,17 +26,17 @@ Puppet::Type.type(:cnos_arp).provide(:gem, parent: Puppet::Provider::Cnos) do
 
   def exists?
     Puppet.debug('I am inside exists')
-    @property_hash[:ensure] == :present
+    @property_hash[:ensure].should be == :present
     # return true since resource is always present
     true
   end
 
   def flush
     Puppet.debug('I am inside flush')
-    params = {}
+    # params = {}
     if @property_hash != {}
       params = { 'if_name' => resource[:name], 'ageout_time' => resource[:ageout_time] }
-      resp = Puppet::Provider::Cnos.set_arp_intf_prop(resource[:name], params)
+      Puppet::Provider::Cnos.set_arp_intf_prop(resource[:name], params)
     end
     @property_hash = resource.to_hash
   end
@@ -44,7 +44,7 @@ Puppet::Type.type(:cnos_arp).provide(:gem, parent: Puppet::Provider::Cnos) do
   def create
     Puppet.debug('I am inside create')
     params = { 'if_name' => resource[:name], 'ageout_time' => resource[:ageout_time] }
-    resp = Puppet::Provider::Cnos.set_arp_intf_prop(resource[:name], params)
+    Puppet::Provider::Cnos.set_arp_intf_prop(resource[:name], params)
     @property_hash.clear
   end
 
