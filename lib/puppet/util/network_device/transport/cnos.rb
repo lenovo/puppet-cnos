@@ -32,7 +32,7 @@ class Puppet::Util::NetworkDevice::Transport::Cnos < Puppet::Util::NetworkDevice
     switch_ip = innerarray[1]
     switch_ip = switch_ip[0, switch_ip.length - 1] if switch_ip.chars.last == '/'
     portnumber = '443'
-    if array [3] != nil
+    if !array [3].nil?
       portnumber = array [3]
       if portnumber.chars.last == '/'
         portnumber = portnumber[0, portnumber.length - 1]
@@ -104,7 +104,7 @@ class Puppet::Util::NetworkDevice::Transport::Cnos < Puppet::Util::NetworkDevice
   def valid_json?(json)
     JSON.parse(json)
     true
-  rescue
+  rescue JSON::ParserError
     false
   end
 end
