@@ -128,7 +128,7 @@ class Puppet::Provider::Cnos < Puppet::Provider
 
   # VLAG Methods start here
   def self.fetch_all_vlag
-    resp = Vlag.get_all_vlag(connection)
+    resp = Vlag.fetch_all_vlag(connection)
     resp
   end
 
@@ -148,7 +148,7 @@ class Puppet::Provider::Cnos < Puppet::Provider
   end
 
   # VLAG Health Methods start here
-  def self.get_vlag_health
+  def self.fetch_vlag_health
     resp = Vlag.get_vlag_health(connection)
     resp
   end
@@ -159,7 +159,7 @@ class Puppet::Provider::Cnos < Puppet::Provider
   end
 
   # VLAG ISL Methods start here
-  def self.get_vlag_isl
+  def self.fetch_vlag_isl
     resp = Vlag.get_vlag_isl(connection)
     resp
   end
@@ -170,10 +170,10 @@ class Puppet::Provider::Cnos < Puppet::Provider
   end
 
   # VLAG Conf Methods start here
-  def self.get_vlag_conf
+  def self.fetch_vlag_conf
     resp = Vlag.get_vlag_conf(connection)
     resp
-end
+  end
 
   def self.update_vlag_conf(params)
     resp = Vlag.update_vlag_conf(connection, params)
@@ -181,7 +181,7 @@ end
   end
 
   # VRRP Methods start here
-  def self.get_vrrp_prop_all
+  def self.fetch_vrrp_prop_all
     resp = Vrrp.get_vrrp_prop_all(connection)
     resp
   end
@@ -202,7 +202,7 @@ end
   end
 
   # VLAN Starts here
-  def self.get_all_vlan
+  def self.fetch_all_vlan
     resp = Vlan.get_all_vlan(connection)
     resp
   end
@@ -223,7 +223,7 @@ end
   end
 
   # VLAN Interface Starts here
-  def self.get_all_vlan_intf
+  def self.fetch_all_vlan_intf
     resp = VlanIntf.get_all_vlan_intf(connection)
     resp
   end
