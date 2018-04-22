@@ -21,7 +21,7 @@ Puppet::Type.type(:cnos_telemetry).provide(:gem, parent: Puppet::Provider::Cnos)
 
   def self.instances
     instances = []
-    resp = Puppet::Provider::Cnos.get_bst_feature
+    resp = Puppet::Provider::Cnos.fetch_bst_feature
     return 'no bst feature' unless resp
     Puppet.debug('BST Enable is ' + resp['bst_enable'].to_s)
     Puppet.debug('Collection Intervael is ' + resp['collection_interval'].to_s)
@@ -79,7 +79,7 @@ Puppet::Type.type(:cnos_telemetry).provide(:gem, parent: Puppet::Provider::Cnos)
     if @property_hash
       puts 'hello'
       params = params_setup
-      Puppet::Provider::Cnos.set_bst_feature(params)
+      Puppet::Provider::Cnos.config_bst_feature(params)
     end
     @property_hash = resource.to_hash
   end
@@ -97,7 +97,7 @@ Puppet::Type.type(:cnos_telemetry).provide(:gem, parent: Puppet::Provider::Cnos)
         'trigger-rate-limit-interval' => 10,
         'bst-enable'                  => 0,
       }
-    Puppet::Provider::Cnos.set_bst_feature(params)
+    Puppet::Provider::Cnos.config_bst_feature(params)
     @property_hash.clear
   end
 end
