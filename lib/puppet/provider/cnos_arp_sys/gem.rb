@@ -19,7 +19,7 @@ Puppet::Type.type(:cnos_arp_sys).provide(:gem, parent: Puppet::Provider::Cnos) d
   mk_resource_methods
 
   def self.instances
-    resp = Puppet::Provider::Cnos.get_arp_sys_prop
+    resp = Puppet::Provider::Cnos.fetch_arp_sys_prop
     return [] if resp.nil?
     resp['ageout_time']
   end
@@ -37,7 +37,7 @@ Puppet::Type.type(:cnos_arp_sys).provide(:gem, parent: Puppet::Provider::Cnos) d
     # params = {}
     if @property_hash != {}
       params = { 'ageout_time' => resource[:ageout_time] }
-      Puppet::Provider::Cnos.set_arp_sys_prop(params)
+      Puppet::Provider::Cnos.config_arp_sys_prop(params)
     end
     @property_hash = resource.to_hash
   end
@@ -45,7 +45,7 @@ Puppet::Type.type(:cnos_arp_sys).provide(:gem, parent: Puppet::Provider::Cnos) d
   def create
     Puppet.debug('I am inside create')
     params = { 'ageout_time' => resource[:ageout_time] }
-    Puppet::Provider::Cnos.set_arp_sys_prop(params)
+    Puppet::Provider::Cnos.config_arp_sys_prop(params)
     @property_hash.clear
   end
 
@@ -53,7 +53,7 @@ Puppet::Type.type(:cnos_arp_sys).provide(:gem, parent: Puppet::Provider::Cnos) d
     Puppet.debug('I am inside destroy')
     params = {}
     params['ageout_time'] = 1500
-    Puppet::Provider::Cnos.set_arp_sys_prop(params)
+    Puppet::Provider::Cnos.config_arp_sys_prop(params)
     @property_hash.clear
   end
 end
