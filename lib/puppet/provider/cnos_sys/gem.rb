@@ -20,12 +20,12 @@ Puppet::Type.type(:cnos_sys).provide(:gem, parent: Puppet::Provider::Cnos) do
   mk_resource_methods
 
   def heartbeat_enable
-    resp = Puppet::Provider::Cnos.get_sys_feature
+    resp = Puppet::Provider::Cnos.sys_feature
     resp['heartbeat-enable']
   end
 
   def msg_interval
-    resp = Puppet::Provider::Cnos.get_sys_feature
+    resp = Puppet::Provider::Cnos.sys_feature
     resp['msg-interval']
   end
 
@@ -42,7 +42,7 @@ Puppet::Type.type(:cnos_sys).provide(:gem, parent: Puppet::Provider::Cnos) do
   end
 
   def exists?
-    resp = Puppet::Provider::Cnos.get_sys_feature
+    resp = Puppet::Provider::Cnos.sys_feature
     resp != nil
   end
 
