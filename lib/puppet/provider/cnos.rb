@@ -61,7 +61,7 @@ class Puppet::Provider::Cnos < Puppet::Provider
   end
 
   def self.config_bst_tracking(params)
-    resp = Telemetry.set_bst_tracking(connection, params)
+    Telemetry.set_bst_tracking(connection, params)
   end
 
   # LAG Methods start here
@@ -84,7 +84,7 @@ class Puppet::Provider::Cnos < Puppet::Provider
   end
 
   # LACP Methods start here
-  def self.get_lacp
+  def self.fetch_lacp
     resp = Lacp.get_lacp(connection)
     resp
   end
