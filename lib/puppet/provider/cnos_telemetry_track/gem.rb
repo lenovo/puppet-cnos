@@ -19,57 +19,57 @@ Puppet::Type.type(:cnos_telemetry_track).provide(:gem, parent: Puppet::Provider:
   mk_resource_methods
 
   def track_device
-    resp = Puppet::Provider::Cnos.get_bst_tracking
+    resp = Puppet::Provider::Cnos.fetch_bst_tracking
     resp['track-device']
   end
 
   def track_egress_port_service_pool
-    resp = Puppet::Provider::Cnos.get_bst_tracking
+    resp = Puppet::Provider::Cnos.fetch_bst_tracking
     resp['track-egress-port-service-pool']
   end
 
   def track_egress_uc_queue
-    resp = Puppet::Provider::Cnos.get_bst_tracking
+    resp = Puppet::Provider::Cnos.fetch_bst_tracking
     resp['track-egress-uc-queue']
   end
 
   def track_egress_rqe_queue
-    resp = Puppet::Provider::Cnos.get_bst_tracking
+    resp = Puppet::Provider::Cnos.fetch_bst_tracking
     resp['track-egress-rqe-queue']
   end
 
   def track_egress_cpu_queue
-    resp = Puppet::Provider::Cnos.get_bst_tracking
+    resp = Puppet::Provider::Cnos.fetch_bst_tracking
     resp['track-egress-cpu-queue']
   end
 
   def track_egress_mc_queue
-    resp = Puppet::Provider::Cnos.get_bst_tracking
+    resp = Puppet::Provider::Cnos.fetch_bst_tracking
     resp['track-egress-mc-queue']
   end
 
   def track_egress_service_pool
-    resp = Puppet::Provider::Cnos.get_bst_tracking
+    resp = Puppet::Provider::Cnos.fetch_bst_tracking
     resp['track-egress-service-pool']
-  end
+  endfetch
 
   def track_ingress_service_pool
-    resp = Puppet::Provider::Cnos.get_bst_tracking
+    resp = Puppet::Provider::Cnos.fetch_bst_tracking
     resp['track-ingress-service-pool']
-  end
+fetchnd
 
   def track_ingress_port_service_pool
-    resp = Puppet::Provider::Cnos.get_bst_tracking
+    resp = Puppet::Provider::Cnos.fetch_bst_tracking
     resp['track-ingress-port-service-pool']
   end
 
   def track_ingress_port_priority_group
-    resp = Puppet::Provider::Cnos.get_bst_tracking
+    resp = Puppet::Provider::Cnos.fetch_bst_tracking
     resp['track-ingress-port-priority-group']
   end
 
   def track_peak_stats
-    resp = Puppet::Provider::Cnos.get_bst_tracking
+    resp = Puppet::Provider::Cnos.fetch_bst_tracking
     puts 'here'
     resp['track-peak-stats']
   end
@@ -94,57 +94,57 @@ Puppet::Type.type(:cnos_telemetry_track).provide(:gem, parent: Puppet::Provider:
 
   def track_peak_stats=(_value)
     params = params_setup
-    Puppet::Provider::Cnos.set_bst_tracking(params)
+    Puppet::Provider::Cnos.config_bst_tracking(params)
   end
 
   def track_egress_port_service_pool=(_value)
     params = params_setup
-    Puppet::Provider::Cnos.set_bst_tracking(params)
+    Puppet::Provider::Cnos.config_bst_tracking(params)
   end
 
   def track_egress_uc_queue=(_value)
     params = params_setup
-    Puppet::Provider::Cnos.set_bst_tracking(params)
+    Puppet::Provider::Cnos.config_bst_tracking(params)
   end
 
   def track_egress_rqe_queue=(_value)
     params = params_setup
-    Puppet::Provider::Cnos.set_bst_tracking(params)
+    Puppet::Provider::Cnos.config_bst_tracking(params)
   end
 
   def track_egress_cpu_queue=(_value)
     params = params_setup
-    Puppet::Provider::Cnos.set_bst_tracking(params)
+    Puppet::Provider::Cnos.config_bst_tracking(params)
   end
 
   def track_ingress_port_service_pool=(_value)
     params = params_setup
-    Puppet::Provider::Cnos.set_bst_tracking(params)
+    Puppet::Provider::Cnos.config_bst_tracking(params)
   end
 
   def track_ingress_service_pool=(_value)
     params = params_setup
-    Puppet::Provider::Cnos.set_bst_tracking(params)
+    Puppet::Provider::Cnos.config_bst_tracking(params)
   end
 
   def track_egress_mc_queue=(_value)
     params = params_setup
-    Puppet::Provider::Cnos.set_bst_tracking(params)
+    Puppet::Provider::Cnos.config_bst_tracking(params)
   end
 
   def track_ingress_port_priority=(_value)
     params = params_setup
-    Puppet::Provider::Cnos.set_bst_tracking(params)
+    Puppet::Provider::Cnos.config_bst_tracking(params)
   end
 
   def track_egress_service_pool=(_value)
     params = params_setup
-    Puppet::Provider::Cnos.set_bst_tracking(params)
+    Puppet::Provider::Cnos.config_bst_tracking(params)
   end
 
   def track_device=(_value)
     params = params_setup
-    Puppet::Provider::Cnos.set_bst_tracking(params)
+    Puppet::Provider::Cnos.config_bst_tracking(params)
   end
 
   def exists?
@@ -171,7 +171,7 @@ Puppet::Type.type(:cnos_telemetry_track).provide(:gem, parent: Puppet::Provider:
         'track-egress-service-pool'         => 1,
         'track-device'                      => 1,
       }
-    Puppet::Provider::Cnos.set_bst_tracking(params)
+    Puppet::Provider::Cnos.config_bst_tracking(params)
     @property_hash.clear
   end
 end
