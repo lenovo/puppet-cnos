@@ -25,11 +25,11 @@ describe 'cnos_vlag_conf', type: :type do
     end
   }
 
-#  it 'should have expected properties' do
-#    properties.each do |property|
-#      expect(type_class.properties.map(&:name)).to be_include(property)
-#    end
-#  end
+  #  it 'should have expected properties' do
+  #    properties.each do |property|
+  #      expect(type_class.properties.map(&:name)).to be_include(property)
+  #    end
+  #  end
 
   it 'should have expected parameters' do
     params.each do |param|
