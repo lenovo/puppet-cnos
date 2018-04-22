@@ -61,13 +61,10 @@ class Puppet::Util::NetworkDevice::Transport::Cnos < Puppet::Util::NetworkDevice
       Puppet.debug("Backtrace = #{e.backtrace.inspect}")
     end
   rescue JSON::ParserError
-
   end
 
   def failure?(result)
-    unless result.status == 200
-      raise("REST failure: HTTP status code #{result.status} detected.  Body of failure is: #{result.body}")
-    end
+    raise("REST failure: HTTP status code #{result.status} detected.  Body of failure is: #{result.body}") unless result.status == 200
   end
 
   def post(url, json)
