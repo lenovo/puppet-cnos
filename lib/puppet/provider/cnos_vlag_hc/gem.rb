@@ -39,7 +39,7 @@ Puppet::Type.type(:cnos_vlag_hc).provide(:gem, parent: Puppet::Provider::Cnos) d
     Puppet.debug('I am inside prefetch')
     vlag = instances
     resources.keys.each do |name|
-      if provider = vlag.find { |_vlag| true }
+      if (provider = vlag.find { |_vlag| true })
         Puppet.debug("Prefetch data coming here is #{provider}")
         resources[name].provider = provider
       end
