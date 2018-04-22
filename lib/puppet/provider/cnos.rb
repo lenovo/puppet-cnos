@@ -55,12 +55,12 @@ class Puppet::Provider::Cnos < Puppet::Provider
     Telemetry.set_bst_feature(connection, params)
   end
 
-  def self.get_bst_tracking
+  def self.fetch_bst_tracking
     resp = Telemetry.get_bst_tracking(connection)
     resp
   end
 
-  def self.set_bst_tracking(params)
+  def self.config_bst_tracking(params)
     resp = Telemetry.set_bst_tracking(connection, params)
   end
 
