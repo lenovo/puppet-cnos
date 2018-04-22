@@ -20,7 +20,7 @@ Puppet::Type.type(:cnos_vlag_hc).provide(:gem, parent: Puppet::Provider::Cnos) d
 
   def self.instances
     instances = []
-    resp = Puppet::Provider::Cnos.get_vlag_health
+    resp = Puppet::Provider::Cnos.fetch_vlag_health
     return 'no vlag health' unless resp
     Puppet.debug('Peer Ip is ' + resp['peer_ip'].to_s)
     Puppet.debug('Retry Interval is ' + resp['retry_interval'].to_s)
