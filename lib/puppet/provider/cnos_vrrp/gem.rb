@@ -20,7 +20,7 @@ Puppet::Type.type(:cnos_vrrp).provide(:gem, parent: Puppet::Provider::Cnos) do
 
   def self.instances
     instances = []
-    resp = Puppet::Provider::Cnos.get_vrrp_prop_all
+    resp = Puppet::Provider::Cnos.fetch_vrrp_prop_all
     return 'no vrrp' unless resp
     resp.each do |item|
       Puppet.debug('VRRP Id is ' + item['vr_id'].to_s)
