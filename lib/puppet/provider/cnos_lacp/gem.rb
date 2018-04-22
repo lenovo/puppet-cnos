@@ -19,7 +19,7 @@ Puppet::Type.type(:cnos_lacp).provide(:gem, parent: Puppet::Provider::Cnos) do
 
   mk_resource_methods
   def self.instances
-    resp = Puppet::Provider::Cnos.get_lacp
+    resp = Puppet::Provider::Cnos.fetch_lacp
     return [] if resp.nil?
     resp['sys_prio']
   end
