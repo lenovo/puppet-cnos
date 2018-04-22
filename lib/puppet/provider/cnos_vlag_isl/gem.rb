@@ -19,7 +19,7 @@ Puppet::Type.type(:cnos_vlag_isl).provide(:gem, parent: Puppet::Provider::Cnos) 
   mk_resource_methods
 
   def self.instances
-    resp = Puppet::Provider::Cnos.get_vlag_isl
+    resp = Puppet::Provider::Cnos.fetch_vlag_isl
     return [] if resp.nil?
     resp['port_aggregator']
   end
