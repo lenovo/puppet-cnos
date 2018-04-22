@@ -20,7 +20,7 @@ Puppet::Type.type(:cnos_vlag_conf).provide(:gem, parent: Puppet::Provider::Cnos)
 
   def self.instances
     instances = []
-    resp = Puppet::Provider::Cnos.get_vlag_conf
+    resp = Puppet::Provider::Cnos.fetch_vlag_conf
     return 'no vlag conf' unless resp
     Puppet.debug('Vlag Status is ' + resp['status'].to_s)
     Puppet.debug('Vlan priority is ' + resp['priority'].to_s)
