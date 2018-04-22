@@ -16,7 +16,7 @@ class Puppet::Util::NetworkDevice::Cnos::Facts
     facts = {
       operatingsystem: :cnos,
     }
-    if response = @transport.call('/nos/api/sysinfo/inventory')
+    if (response = @transport.call('/nos/api/sysinfo/inventory'))
       Puppet.debug("response  = #{response}")
       result = response
     else
