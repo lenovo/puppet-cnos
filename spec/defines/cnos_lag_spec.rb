@@ -17,7 +17,6 @@ describe 'cnos_lag', type: :type do
     ]
   end
 
-  
   # it {
   #   is_expected.to be_valid_type.with_properties do
   #     expect(type_class.properties.map(&:name)).to be_include(property)
