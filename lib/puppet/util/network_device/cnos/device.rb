@@ -5,6 +5,7 @@ require File.join(File.dirname(__FILE__), '../transport/cnos')
 
 require 'uri'
 
+# This is a utilty class
 class Puppet::Util::NetworkDevice::Cnos::Device
   attr_reader :connection
   attr_accessor :url, :transport
