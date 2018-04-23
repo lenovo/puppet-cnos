@@ -14,6 +14,7 @@ require 'puppet/util/network_device'
 require 'puppet/util/network_device/transport'
 require 'puppet/util/network_device/transport/base'
 
+# This is a transport utility class
 class Puppet::Util::NetworkDevice::Transport::Cnos < Puppet::Util::NetworkDevice::Transport::Base
   attr_reader :connection
 
