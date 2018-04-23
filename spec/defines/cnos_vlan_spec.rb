@@ -35,10 +35,14 @@ describe 'cnos_vlan', type: :type do
     end
   end
 
+  # it 'does require a name' do
+  #   expect do
+  #     type_class.new({})
+  #   end.to raise_error(Puppet::Error, 'Title or name must be provided')
+  # end
+
   it 'does require a name' do
-    expect do
-      type_class.new({})
-    end.to raise_error(Puppet::Error, 'Title or name must be provided')
+    expect { type_class.new({}) }.to raise_error(Puppet::Error, 'Title or name must be provided')
   end
 
   it 'does support :present as a value to :ensure' do
