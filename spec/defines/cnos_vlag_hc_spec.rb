@@ -19,17 +19,17 @@ describe 'cnos_vlag_hc', type: :type do
     ]
   end
 
-  it {
-    is_expected.to be_valid_type.with_properties do
+  # it {
+  #   is_expected.to be_valid_type.with_properties do
+  #     expect(type_class.properties.map(&:name)).to be_include(property)
+  #   end
+  # }
+
+  it 'does have expected properties' do
+    properties.each do |property|
       expect(type_class.properties.map(&:name)).to be_include(property)
     end
-  }
-
-  #  it 'should have expected properties' do
-  #    properties.each do |property|
-  #      expect(type_class.properties.map(&:name)).to be_include(property)
-  #    end
-  #  end
+  end
 
   it 'should have expected parameters' do
     params.each do |param|
