@@ -28,7 +28,7 @@
 # @property [Integer] bst_enable Set to 1 to enable BST, 0 to disable it.
 
 class cnos::bst_feature (
-  String $name = 'bst_feature',
+  String $feature_name = 'bst_feature',
   Enum['present', 'absent'] $ensure  = 'present',
   Integer $collection_interval,
   Integer $send_async_reports,
@@ -38,7 +38,7 @@ class cnos::bst_feature (
   Integer $trigger_rate_limit_interval,
   Integer $bst_enable,
 ){
-  cnos_telemetry{ $name:
+  cnos_telemetry{ $feature_name:
     ensure                      => $ensure,
     collection_interval         => $collection_interval,
     send_async_reports          => $send_async_reports,
