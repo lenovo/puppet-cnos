@@ -252,9 +252,7 @@ class Puppet::Provider::Cnos < Puppet::Provider
   end
 
   def self.call_items(url, args = { 'expandSubcollections' => 'true' })
-    if (call = transport.call(url, args))
-      call
-    end
+    call if transport.call(url, args)
   end
 
   def self.post(url, message)
