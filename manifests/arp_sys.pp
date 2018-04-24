@@ -24,10 +24,10 @@
 class cnos::arp_sys (
   String $system = $title,
   Enum['present', 'absent'] $ensure  = 'present',
-  Integer $ageout_time 
+  Integer $ageout_time,
 ){
   cnos_arp{ $system :
     ensure      => $ensure,
-    ageout_time => $ageout_time
+    ageout_time => $ageout_time,
   }
 }
