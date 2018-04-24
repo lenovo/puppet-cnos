@@ -21,9 +21,13 @@
 # @param [String] name Is set as arp_sys
 # @property [Integer] ageout_time The global ARP entry age-out time, in seconds.
 
-class cnos::arp_sys {
-  cnos_arp_sys{'arp_sys':
-    ensure      => 'present',
-    ageout_time => 1000,
+class cnos::arp_sys (
+  String $system = $title,
+  Enum['present', 'absent'] $ensure  = 'present',
+  Integer $ageout_time 
+){
+  cnos_arp{ $system :
+    ensure      => $ensure,
+    ageout_time => $ageout_time
   }
 }
