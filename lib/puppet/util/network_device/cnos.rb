@@ -12,6 +12,5 @@
 require 'puppet/util/network_device'
 
 # This is a utility class
-puppet-cnos/lib/puppet/util/network_device/cnos.rb
 module Puppet::Util::NetworkDevice::Cnos
 end
