@@ -23,11 +23,16 @@
 # @property [String] admin_state Admin state of this vlan.
 # @property [String] vlan_name Name of this vlan.
 
-class cnos::vlan {
-  cnos_vlan { '11':
-    ensure      => 'present',
-    vlan_id     => 11,
-    admin_state => 'down',
-    vlan_name   => 'test11',
+class cnos::vlan (
+  Integer $vlan_id,
+  Enum['present', 'absent'] $ensure  = 'present',
+  String  $admin_state = 'up',
+  String  $vlan_name   = $title,
+){
+  cnos_vlan { $vlan_name :
+    ensure      => $ensure,
+    vlan_id     => $vlan_id,
+    admin_state => $admin_state,
+    vlan_name   => $vlan_name,
   }
 }
