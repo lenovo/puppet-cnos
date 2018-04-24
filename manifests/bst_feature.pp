@@ -27,15 +27,25 @@
 # @property [Integer] trigger_rate_limit_interval The trigger rate limit interval
 # @property [Integer] bst_enable Set to 1 to enable BST, 0 to disable it.
 
-class cnos::bst_feature {
-  cnos_telemetry{ 'bst_feature':
-    ensure                      => 'present',
-    collection_interval         => 70,
-    send_async_reports          => 0,
-    send_snapshot_on_trigger    => 1,
-    trigger_rate_limit          => 1,
-    async_full_report           => 1,
-    trigger_rate_limit_interval => 10,
-    bst_enable                  => 0,
+class cnos::bst_feature (
+  String $name = 'bst_feature',
+  Enum['present', 'absent'] $ensure  = 'present',
+  Integer $collection_interval,
+  Integer $send_async_reports,
+  Integer $send_snapshot_on_trigger,
+  Integer $trigger_rate_limit,
+  Integer $async_full_report,
+  Integer $trigger_rate_limit_interval,
+  Integer $bst_enable,
+){
+  cnos_telemetry{ $name:
+    ensure                      => $ensure,
+    collection_interval         => $collection_interval,
+    send_async_reports          => $send_async_reports,
+    send_snapshot_on_trigger    => $send_snapshot_on_trigger,
+    trigger_rate_limit          => $trigger_rate_limit,
+    async_full_report           => $async_full_report,
+    trigger_rate_limit_interval => $trigger_rate_limit_interval,
+    bst_enable                  => $bst_enable,
   }
 }
