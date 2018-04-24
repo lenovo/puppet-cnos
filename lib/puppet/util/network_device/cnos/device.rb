@@ -28,10 +28,7 @@ class Puppet::Util::NetworkDevice::Cnos::Device
       self,
       'puppet/util/network_device/transport',
     )
-    if @autoloader.load('cnos')
-      @transport = Puppet::Util::NetworkDevice::Transport::Cnos.new(url, options[:debug])
-      Puppet.debug(self.class.to_s.split('::').last + ': Inside Device Initialize')
-    end
+    @transport = Puppet::Util::NetworkDevice::Transport::Cnos.new(url, options[:debug]) if @autoloader.load('cnos')
   end
 
   def facts
