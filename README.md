@@ -63,7 +63,7 @@ To install the gem files on Puppet Agent
 
 /opt/puppetlabs/puppet/bin/gem install lenovo-rbapi -v 0.0.5
 
-To hanlde rest-client and lenovo-rbapi gem dependencies on Puppet Agent, 'Package' resource is used for reference gems on init.pp manifest file on Puppet Master under CNOS Module path. Sample manifest looks like;
+To handle rest-client and lenovo-rbapi gem dependencies on Puppet Agent, 'Package' resource is used for reference gems on init.pp manifest file on Puppet Master under CNOS Module path. Sample manifest looks like;
 
 ```ruby
 class cnos::install {
