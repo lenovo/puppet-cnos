@@ -22,10 +22,14 @@
 # @param [String] name Ethernet interface name.
 # @property [Integer] ageout_time The global ARP entry age-out time, in seconds.
 
-class cnos::arp {
-  cnos_arp{'Ethernet1/1':
-    ensure      => 'present',
-    if_name     => 'Ethernet1/1',
-    ageout_time => 80,
+class cnos::arp (
+  String $interface_name = $title,
+  Enum['present', 'absent'] $ensure  = 'present',
+  Integer $ageout_time 
+){
+  cnos_arp{ $interface_name :
+    ensure      => $ensure,
+    if_name     => $interface_name,
+    ageout_time => $ageout_time
   }
 }
