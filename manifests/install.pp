@@ -11,8 +11,4 @@ class cnos::install {
     ensure   => '0.0.5',
     provider => $provider,
   }
-  package { 'rest-client' :
-    ensure => '2.0.2',
-    provider => 'puppet_gem',
-  }
 }
