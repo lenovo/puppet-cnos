@@ -23,9 +23,9 @@
 # @property [Integer] ageout_time The global ARP entry age-out time, in seconds.
 
 class cnos::arp (
+  Integer $ageout_time,
   String $interface_name = $title,
   Enum['present', 'absent'] $ensure  = 'present',
-  Integer $ageout_time,
 ){
   cnos_arp{ $interface_name :
     ensure      => $ensure,
