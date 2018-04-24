@@ -25,11 +25,11 @@
 class cnos::arp (
   String $interface_name = $title,
   Enum['present', 'absent'] $ensure  = 'present',
-  Integer $ageout_time 
+  Integer $ageout_time,
 ){
   cnos_arp{ $interface_name :
     ensure      => $ensure,
     if_name     => $interface_name,
-    ageout_time => $ageout_time
+    ageout_time => $ageout_time,
   }
 }
