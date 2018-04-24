@@ -61,7 +61,9 @@ class Puppet::Util::NetworkDevice::Transport::Cnos < Puppet::Util::NetworkDevice
       Puppet.debug("Error Message = #{e.message}")
       Puppet.debug("Backtrace = #{e.backtrace.inspect}")
     end
-  rescue JSON::ParserError
+  rescue JSON::ParserError => ex
+    Puppet.debug("Error Message = #{ex.message}")
+    Puppet.debug("Backtrace = #{ex.backtrace.inspect}")
   end
 
   def failure?(result)
