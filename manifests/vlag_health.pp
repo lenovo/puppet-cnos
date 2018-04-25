@@ -19,17 +19,24 @@
 # @example Declaring the class
 #   include cnos_vlag_hc
 #
-# @param [String] name The string vlag_health.
+# @param [String] feature_name The string vlag_health.
 # @property [String] status Whether the vLAG is enabled or disabled.
 # @property [Integer] keepalive_interval Time interval, in seconds.
 # @property [Integer] retry_interval Time interval, in seconds.
 # @property [Integer] keepalive_attempts Number of keepalive attempts before declaring peer down.
 
-class cnos::vlag_health {
-  cnos_vlag_hc {'vlag_health':
-    ensure             => 'absent',
-    keepalive_interval => 5,
-    retry_interval     => 10,
-    keepalive_attempts => 15,
+class cnos::vlag_health (
+  String $status,
+  Integer $keepalive_interval,
+  Integer $retry_interval,
+  Integer $keepalive_attempts,
+  String $feature_name = $title,
+  Enum['present', 'absent'] $ensure  = 'present',
+){
+  cnos_vlag_hc { $feature_name :
+    ensure             => $ensure,
+    keepalive_interval => $keepalive_interval,
+    retry_interval     => $retry_interval,
+    keepalive_attempts => $keepalive_attempts,
   }
 }
