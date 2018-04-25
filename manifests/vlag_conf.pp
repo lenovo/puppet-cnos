@@ -26,13 +26,21 @@
 # @property [Integer] auto_recover Time interval, in seconds; an integer from 240-3600. Default 300
 # @property [Integer] startup_delay Delay time, in seconds; an integer from 0-3600. Default 120.
 
-class cnos::vlag_conf {
-  cnos_vlag_conf{'vlag_conf':
-    ensure        => 'present',
-    status        => 'enable',
-    tier_id       => 10,
-    priority      => 33,
-    auto_recover  => 313,
-    startup_delay => 133,
+class cnos::vlag_conf (
+  String $status,
+  Integer $tier_id = 0,
+  Integer $priority = 0,
+  Integer $auto_recover = 300,
+  Integer $startup_delay = 120,
+  String $feature_name = $title,
+  Enum['present', 'absent'] $ensure  = 'present',
+){
+  cnos_vlag_conf{ $feature_name :
+    ensure        => $ensure,
+    status        => $status,
+    tier_id       => $tier_id,
+    priority      => $priority,
+    auto_recover  => $auto_recover,
+    startup_delay => $startup_delay,
   }
 }
