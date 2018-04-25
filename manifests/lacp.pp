@@ -20,9 +20,13 @@
 #
 # @property [Integer] sys_prio LACP system priority, a positive integer from 1-65535.
 
-class cnos::lacp {
-  cnos_lacp {'sys_prio':
-    ensure   => 'present',
-    sys_prio => '32769',
+class cnos::lacp (
+  Integer $sys_prio = '32768',
+  String $feature_name = 'sys_prio',
+  Enum['present', 'absent'] $ensure  = 'present',
+){
+  cnos_lacp { $feature_name :
+    eensure  => $ensure,
+    sys_prio => $sys_prio,
   }
 }
