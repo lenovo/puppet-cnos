@@ -30,8 +30,8 @@ class cnos::vlag (
   String $inst_id = $title,
 ){
   cnos_vlag { $inst_id:
-    inst_id         => $inst_id,
     ensure          => $ensure,
+    inst_id         => $inst_id,
     status          => $status,
     port_aggregator => $port_aggregator,
   }
