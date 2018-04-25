@@ -46,7 +46,7 @@ class cnos::lag (
       'lag_mode'     => $lag_mode,
       'if_name'      => $if_name,
     }],
-    lag_id     => $lag_id
+    lag_id     => $lag_id,
     min_links  => $min_links,
   }
 }
