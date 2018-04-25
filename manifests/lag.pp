@@ -41,7 +41,7 @@ class cnos::lag (
   cnos_lag { $lag_id:
     ensure     => $ensure,
     interfaces =>  [ {
-      'lacp_prio'    => $lacp_prio
+      'lacp_prio'    => $lacp_prio,
       'lacp_timeout' => $lacp_timeout,
       'lag_mode'     => $lag_mode,
       'if_name'      => $if_name,
