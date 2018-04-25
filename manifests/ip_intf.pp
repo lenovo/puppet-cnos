@@ -46,7 +46,7 @@ class cnos::ip_intf (
     if_name       => $if_name,
     mtu           => $mtu,
     vrf_name      => $vrf_name,
-    admin_state   => $admin_state
+    admin_state   => $admin_state,
     ip_prefix_len => $ip_prefix_len,
   }
 }
