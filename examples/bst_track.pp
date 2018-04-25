@@ -1,4 +1,4 @@
-# Docu
+# CNOS BST Track example
 
 class cnos::bst_track {
   cnos_telemetry_track{'bst_track':
