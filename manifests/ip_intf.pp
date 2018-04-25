@@ -28,15 +28,25 @@
 # @property [String] vrf_name The name of the VRF to which the interface belongs.The named VRF must exist.
 # @property [Integer] ip_prefix_len IP address mask, a positive integer from 1-32.
 # @property [String] admin_state The admin status; one of up, down.
-class cnos::ip_intf {
-  cnos_ip_intf{'Ethernet1/11':
-    ensure        => present,
-    ip_addr       => '1.1.1.1',
-    bridge_port   => 'no',
-    if_name       => 'Ethernet1/11',
-    mtu           => 1502,
-    vrf_name      => 'default',
-    admin_state   => 'up',
-    ip_prefix_len => 24
+class cnos::ip_intf (
+  String $if_name,
+  String $ip_addr,
+  String $bridge_port,
+  Integer $mtu,
+  String $vrf_name,
+  Integer $ip_prefix_len,
+  String  $admin_state = 'up',
+  Enum['present', 'absent'] $ensure  = 'present',
+  String $name   = $title,
+){
+  cnos_ip_intf{ $name :
+    ensure        => $ensure,
+    ip_addr       => $ip_addr,
+    bridge_port   => $bridge_port,
+    if_name       => $if_name,
+    mtu           => $mtu,
+    vrf_name      => $vrf_name,
+    admin_state   => $admin_state
+    ip_prefix_len => $ip_prefix_len,
   }
 }
