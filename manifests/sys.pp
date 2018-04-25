@@ -24,10 +24,15 @@
 # @property [Integer] msg_interval The interval with which heartbeat messages sent.
 # @property [Integer] heartbeat_enable The value is 0/1 for enable or disable
 
-class cnos::sys {
-  cnos_sys{'sys':
-    ensure           => present,
-    msg_interval     => 15,
-    heartbeat_enable => 1
+class cnos::sys (
+  Integer $msg_interval,
+  Integer $heartbeat_enable,
+  String $feature_name = 'sys',
+  Enum['present', 'absent'] $ensure  = 'present',
+){
+  cnos_sys{ $feature_name :
+    ensure           => $ensure,
+    msg_interval     => $msg_interval,
+    heartbeat_enable => $heartbeat_enable,
   }
 }
