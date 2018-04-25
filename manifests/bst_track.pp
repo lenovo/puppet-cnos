@@ -46,7 +46,7 @@ class cnos::bst_track (
   String $feature_name = 'bst_track',
   Enum['present', 'absent'] $ensure  = 'present',
 ){
-  cnos_telemetry_track{ $feature_name :
+  cnos_telemetry_track{ $feature_name:
     ensure                            => $ensure,
     track_egress_port_service_pool    => $track_egress_port_service_pool,
     track_egress_uc_queue             => $track_egress_uc_queue,
