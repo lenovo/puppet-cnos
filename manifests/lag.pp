@@ -29,16 +29,24 @@
 # @property [String] if_name Ethernet interface name.
 
 
-class cnos::lag {
-  cnos_lag { '11':
-    ensure     => 'present',
+class cnos::lag (
+  Integer $min_links,
+  Integer $lacp_prio,
+  String $lacp_timeout,
+  String $lag_mode,
+  String $if_name,
+  Enum['present', 'absent'] $ensure  = 'present',
+  String $lag_id = $title,
+){
+  cnos_lag { $lag_id:
+    ensure     => $ensure,
     interfaces =>  [ {
-      'lacp_prio'    => 32768,
-      'lacp_timeout' => 'long',
-      'lag_mode'     => 'lacp_active',
-      'if_name'      => 'Ethernet1/23',
+      'lacp_prio'    => $lacp_prio
+      'lacp_timeout' => $lacp_timeout,
+      'lag_mode'     => $lag_mode,
+      'if_name'      => $if_name,
     }],
-    lag_id     => 11,
-    min_links  => 2,
+    lag_id     => $lag_id
+    min_links  => $min_links,
   }
 }
