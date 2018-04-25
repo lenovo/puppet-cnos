@@ -37,9 +37,9 @@ class cnos::ip_intf (
   Integer $ip_prefix_len,
   String  $admin_state = 'up',
   Enum['present', 'absent'] $ensure  = 'present',
-  String $name   = $title,
+  String $feature_name   = $title,
 ){
-  cnos_ip_intf{ $name :
+  cnos_ip_intf{ $feature_name :
     ensure        => $ensure,
     ip_addr       => $ip_addr,
     bridge_port   => $bridge_port,
