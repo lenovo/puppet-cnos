@@ -35,18 +35,33 @@
 
 # @property [String] vlan_name Name of this vlan.
 
-class cnos::vrrp {
-  cnos_vrrp{ '1' :
-    ensure            => present,
-    prio              => 100,
-    vr_id             => 1,
-    if_name           => 'Ethernet1/11',
-    preempt           => 'no',
-    admin_state       => 'down',
-    ip_addr           => '1.1.1.25',
-    switch_back_delay => 1,
-    accept_mode       => 'no',
-    v2_compt          => 'no',
-    ad_intvl          => 100,
+class cnos::vrrp (
+  String $if_name,
+  Integer $vr_id,
+  String $ip_addr,
+  Integer $ad_intvl,
+  String $preempt,
+  Integer $prio,
+  String $admin_state,
+  String $oper_status,
+  String $track_if,
+  String $accept_mode,
+  Integer $switch_back_delay,
+  String $v2_compt,
+  String $vr_id_s = $title,
+  Enum['present', 'absent'] $ensure  = 'present',
+){
+  cnos_vrrp{ $vr_id_s :
+    ensure            => $ensure,
+    prio              => $prio,
+    vr_id             => $vr_id,
+    if_name           => $if_name,
+    preempt           => $preempt,
+    admin_state       => $admin_state,
+    ip_addr           => $ip_addr,
+    switch_back_delay => $switch_back_delay,
+    accept_mode       => $accept_mode,
+    v2_compt          => $v2_compt,
+    ad_intvl          => $ad_intvl,
   }
 }
