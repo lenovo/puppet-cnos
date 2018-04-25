@@ -31,18 +31,33 @@
 # @property [Integer] track_ingress_service_pool Ingress service pool tracking
 # @property [Integer] track_device enable tracking of this device
 
-class cnos::bst_track {
-  cnos_telemetry_track{'bst_track':
-    track_egress_port_service_pool    =>  0,
-    track_egress_uc_queue             =>  0,
-    track_egress_rqe_queue            =>  0,
-    track_egress_cpu_queue            =>  0,
-    track_ingress_port_service_pool   =>  0,
-    track_ingress_service_pool        =>  0,
-    track_egress_mc_queue             =>  0,
-    track_peak_stats                  =>  1,
-    track_ingress_port_priority_group =>  0,
-    track_egress_service_pool         =>  0,
-    track_device                      =>  0,
+class cnos::bst_track (
+  Integer $track_egress_port_service_pool,
+  Integer $track_egress_uc_queue,
+  Integer $track_egress_rqe_queue,
+  Integer $track_egress_cpu_queue,
+  Integer $track_ingress_port_service_pool,
+  Integer $track_ingress_service_pool,
+  Integer $track_egress_mc_queue,
+  Integer $track_peak_stats,
+  Integer $track_ingress_port_priority_group,
+  Integer $track_egress_service_pool,
+  Integer $track_device,
+  String $feature_name = 'bst_track',
+  Enum['present', 'absent'] $ensure  = 'present',
+){
+  cnos_telemetry_track{ $feature_name :
+    ensure                            => $ensure,
+    track_egress_port_service_pool    => $track_egress_port_service_pool,
+    track_egress_uc_queue             => $track_egress_uc_queue,
+    track_egress_rqe_queue            => $track_egress_rqe_queue,
+    track_egress_cpu_queue            => $track_egress_cpu_queue,
+    track_ingress_port_service_pool   => $track_ingress_port_service_pool,
+    track_ingress_service_pool        => $track_ingress_service_pool,
+    track_egress_mc_queue             => $track_egress_mc_queue,
+    track_peak_stats                  => $track_peak_stats,
+    track_ingress_port_priority_group => $track_ingress_port_priority_group,
+    track_egress_service_pool         => $track_egress_service_pool,
+    track_device                      => $track_device,
   }
 }
