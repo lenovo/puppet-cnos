@@ -23,11 +23,16 @@
 # @property [String] status VLAG status, one of enable, disable.
 # @property [String] port_aggregator LAG identifier; an integer from 1-4096.
 
-class cnos::vlag {
-  cnos_vlag { '2':
-    inst_id         => 2,
-    ensure          => 'present',
-    status          => 'disable',
-    port_aggregator => 20,
+class cnos::vlag (
+  String $status,
+  String $port_aggregator,
+  Enum['present', 'absent'] $ensure  = 'present',
+  String $inst_id = $title,
+){
+  cnos_vlag { $inst_id:
+    inst_id         => $inst_id,
+    ensure          => $ensure,
+    status          => $status,
+    port_aggregator => $port_aggregator,
   }
 }
