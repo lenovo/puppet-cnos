@@ -11,11 +11,6 @@
 
 # This class is used in configurations of VLAG
 #
-# This is an example of how to make this configirations
-# All attributes are not mandatory for this configurations
-# If you change ensure to 'absent', everything will revert to default values
-# You can change all the parameters of VLAG configurations using this class
-#
 # @example Declaring the class
 #   include cnos_vlag_conf
 #
