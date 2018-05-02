@@ -11,10 +11,6 @@
 
 # This class provides setting of ageout time for arp for the system
 #
-# This is an example of how to make this timeout value to set
-# If you change ensure to 'absent', it will reset this value to factory default
-# The default value is 1500
-#
 # @example Declaring the class
 #   include cnos_arp
 #
