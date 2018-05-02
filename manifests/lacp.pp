@@ -11,10 +11,6 @@
 
 # This class provides setting of LACP system priority for all interfaces
 #
-# This is an example of how to make this sys_prio value to set
-# If you change ensure to 'absent', it will reset this value to factory default
-# The default value is 32768
-#
 # @example Declaring the class
 #   include cnos_lacp
 #
