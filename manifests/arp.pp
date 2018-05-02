@@ -11,11 +11,6 @@
 
 # This class provides setting of ageout time for arp for an interface
 #
-# This is an example of how to make this timeout value to set
-# The interface has to be present for this setting.
-# If you change ensure to 'absent', it will reset this value to factory default
-# The default value is 1500
-#
 # @example Declaring the class
 #   include cnos_arp
 #
