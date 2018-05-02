@@ -1,6 +1,6 @@
 ## Maintenance
 
 Maintainers:
-  - Lenovo CNOS Team `amuraleedhar |at| lenovo |dot| com`
+  - Lenovo CNOS Puppet Team 'amuraleedhar |at| lenovo |dot| com'
 
-Tickets: https://github.com/lenovo/puppet-cnos/issues. Make sure to set component to `cnos`.
+Tickets: https://github.com/lenovo/puppet-cnos/issues. 
