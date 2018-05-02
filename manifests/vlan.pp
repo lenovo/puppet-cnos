@@ -11,10 +11,6 @@
 
 # A Vlan creation/update/delete class for CNOS Devices.
 #
-# This is an example of how to create a vlan
-# If you change ensure to 'absent', it will delete the vlan
-# You can change vlan_name and admin_state of a device using this class
-#
 # @example Declaring the class
 #   include cnos_vlan
 #
