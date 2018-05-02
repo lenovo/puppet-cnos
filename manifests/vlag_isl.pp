@@ -11,11 +11,6 @@
 
 # This class provides setting of VLAG Instance configurations
 #
-# This is an example to show how to set the port aggregator 
-# This class allows you to set port-aggregator value only.
-# Rest of the attributes including delete options will 
-# be implemented in later releases to this class.
-#
 # @example Declaring the class
 #   include cnos_vlag_isl
 #
