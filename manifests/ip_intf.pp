@@ -11,12 +11,6 @@
 
 # This class provides ip interface association
 #
-# This is an example of how to make this association
-# The interface must exist for this association.
-# If you change ensure to 'absent', it will just change mtu and bridge_port 
-# to default values. There is no delete method for this association
-# You can change all the parameters of this association using this class
-#
 # @example Declaring the class
 #   include cnos_ip_intf
 #
