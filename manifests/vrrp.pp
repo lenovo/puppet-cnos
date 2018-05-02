@@ -11,10 +11,6 @@
 
 # A VRRP creation/update/delete class for CNOS Devices.
 #
-# This is an example of how to create a VRRP
-# If you change ensure to 'absent', it will delete the VRRP Configuration
-# You can change various attributes associated with VRRP using this class
-#
 # @example Declaring the class
 #   include cnos_vrrp
 #
