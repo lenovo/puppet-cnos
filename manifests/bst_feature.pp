@@ -11,10 +11,6 @@
 
 # This class is used to get and set BST Feature 
 #
-# This is an example of how to make this telemtry configuration.
-# If you change ensure to 'absent', it will set all the values to device defaults.
-# You can change all the parameters of this association using this class
-#
 # @example Declaring the class
 #   include cnos_telemetry
 #
