@@ -11,11 +11,6 @@
 
 # This class provides associating of interface with vlans
 #
-# This is an example of how to make this association
-# Both the interface and the vlans has to be present for this association.
-# If you change ensure to 'absent', it will dissociate from all vlans
-# You can change all the parameters of this association using this class
-#
 # @example Declaring the class
 #   include cnos_vlan_intf
 #
