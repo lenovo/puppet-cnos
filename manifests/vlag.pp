@@ -11,10 +11,6 @@
 
 # A VLAG creation/update/delete class for CNOS Devices.
 #
-# This is an example of how to create a VLAG Instance.
-# If you change ensure to 'absent', it will delete the vlag instance
-# You can change status and port_aggregator values of a vlag instance.
-#
 # @example Declaring the class
 #   include cnos_vlag
 #
