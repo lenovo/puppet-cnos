@@ -1,4 +1,4 @@
-## 2018-01-24 Release 1.0.0
+## 2018-05-04 Release 1.0.0
 
 ### Summary
 This release contains all the requirements for a valid Puppet module
