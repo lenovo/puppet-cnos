@@ -1,12 +1,11 @@
+## 2018-01-24 Release 1.0.0
 
-2018-01-24 Release 1.0.0
-
-###Summary
+### Summary
 This release contains all the requirements for a valid Puppet module
 All the bugs came up during testing has been resolved.
 Tried to incorporate all review comments.
 
-####Features and Improvements
+#### Features and Improvements
 - Added example section which is tested with Lenovo G8272
 - Added install.pp which will take care of dependency gem files
 - Added variable declaration in every manifest files
@@ -15,7 +14,7 @@ Tried to incorporate all review comments.
 - Changes in gem file to include the changes in type
 - Added destroy method in all gem.rb
 
-####Fixed
+#### Fixed
 - Removed rest-client gem from install.pp and added to README.md
 - Modified metadata.json to take care of operating system support approriately.
 - Removed hard tabs from metadata.json
@@ -28,15 +27,15 @@ Tried to incorporate all review comments.
 - Custom type tests are moved to spec/types
 - Maintainers.md modified to take care of issues appropriately.
 
-2018-02-26 Release 0.2.0
+## 2018-02-26 Release 0.2.0
 
-###Summary
+### Summary
 This release removes the dependency of config.yml and added the code to the 
 util/network_device folder so that facts are fetched for the device.
 The transport layer which establishes with network device is realized
 And a utilty file is created for provided to interract with devices using lenovo-rbapi.
 
-####Features
+#### Features
 - Vlan Create, Update and Delete.
 - Get and Set of Vlan properties on an Ethernet interface.
 - Get and set properties of all VRRP VRs of interfaces.
@@ -56,8 +55,8 @@ And a utilty file is created for provided to interract with devices using lenovo
 #### Fixed
 - PDK Validation issues are resolved
 
-2018-01-24 Release 0.1.0
+## 2018-01-24 Release 0.1.0
 
-###Summary
+### Summary
 Initial release covering all the 15 modules.
 
