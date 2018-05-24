@@ -10,14 +10,7 @@
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
 Puppet::Type.newtype(:cnos_sys) do
-  desc ' = {
-            Manage Telemetry system properties on Lenovo cnos.
-            Example:
-              cnos_sys{"sys":
-                heartbeat_enable => 1,
-                msg_interval => 10,
-              }
-           }'
+  desc 'Manage Telemetry system properties on Lenovo CNOS Switches.'
 
   apply_to_device
   ensurable
