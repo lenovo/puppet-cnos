@@ -10,14 +10,7 @@
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
 Puppet::Type.newtype(:cnos_arp_sys) do
-  desc ' = {
- 	    Manage Arp Sys on Lenovo cnos.
-
- 	    Example:
- 	      cnos_arp_sys{"arp_sys":
-			    ageout_time => ageout_time
-              }
-           }'
+  desc 'Manage Arp Sys on Lenovo CNOS Switches.'
 
   apply_to_device
   ensurable
