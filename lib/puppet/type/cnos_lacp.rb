@@ -10,14 +10,7 @@
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
 Puppet::Type.newtype(:cnos_lacp) do
-  desc ' = {
- 	    Manage Lacp on Lenovo cnos.
-
- 	    Example:
- 	     cnos_lacp {"lacp":
-		      sys_prio => <sys_prio>
-              }
-           }'
+  desc 'Manage Lacp on Lenovo CNOS Switches.'
 
   apply_to_device
   ensurable
