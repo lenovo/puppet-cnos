@@ -10,16 +10,7 @@
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
 Puppet::Type.newtype(:cnos_vlan_intf) do
-  desc ' = {
-            Manage Vlan_intf on Lenovo cnos.
-
-            Example:
-             cnos_vlan_intf {"<if_name>":
-                     bridgeport_mode => access/trunk,
-                     pvid => "<pvid>",
-                     vlans => ["<vlan_id>"]
-              }
-           }'
+  desc 'Manage Vlan_intf on Lenovo CNOS Switches.'
 
   ensurable
   apply_to_device
