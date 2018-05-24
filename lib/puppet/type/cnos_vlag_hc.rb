@@ -10,17 +10,7 @@
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
 Puppet::Type.newtype(:cnos_vlag_hc) do
-  desc ' = {
-            Manage Vlag Health on Lenovo cnos.
-              Example:
-                cnos_vlag_hc {"vlag_health":
-                  "keepalive_interval": 10,
-                  "retry_interval": 30,
-                  "peer_ip": "10.240.177.120",
-                  "vrf": "default",
-                  "keepalive_attempts": 3
-                }
-           }'
+  desc 'Manage Vlag Health on Lenovo CNOS Switches.'
 
   apply_to_device
   ensurable
