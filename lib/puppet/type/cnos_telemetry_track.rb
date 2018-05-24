@@ -10,24 +10,7 @@
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
 Puppet::Type.newtype(:cnos_telemetry_track) do
-  desc ' = {
-            Manage Telemetry tracking on Lenovo cnos.
-
-              Example:
-                cnos_telemetry_track {"bst":
-                  "track-egress-port-service-pool": 1,
-                  "track-egress-uc-queue": 1,
-                  "track-egress-rqe-queue": 1,
-                  "track-egress-cpu-queue": 1,
-                  "track-ingress-port-service-pool": 1,
-                  "track-ingress-service-pool": 1,
-                  "track-egress-mc-queue": 1,
-                  "track-peak-stats": 0,
-                  "track-ingress-port-priority-group": 1,
-                  "track-egress-service-pool": 1,
-                  "track-device": 1
-                }
-           }'
+  desc 'Manage Telemetry tracking on Lenovo CNOS Switches.'
 
   apply_to_device
   ensurable
