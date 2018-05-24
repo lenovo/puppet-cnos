@@ -10,16 +10,7 @@
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
 Puppet::Type.newtype(:cnos_vlag) do
-  desc ' = {
- 	    Manage Vlags on Lenovo cnos.
-
- 	    Example:
- 	     cnos_vlag {1:
-                     inst_id         => <inst_id>,
-		     port_aggregator => <port_aggregator>,
-		     status          => enable/disable,
-             }
-           }'
+  desc 'Manage Vlags on Lenovo CNOS Switches.'
   apply_to_device
   ensurable
 
