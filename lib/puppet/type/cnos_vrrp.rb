@@ -10,24 +10,7 @@
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
 Puppet::Type.newtype(:cnos_vrrp) do
-  desc ' = {
-            Manage Vrrp on Lenovo cnos.
-
-            Example:
-             cnos_vrrp {name:
-                         vr_id: "<vr_id>",
-                         if_name : "<if_name>",
-                         ip_addr: "<ip_addr>",
-                         ad_intvl: "<ad_intvl>",
-                         preempt: "<preempt>",
-                         prio: "<prio>",
-                         admin_state: "<admin_state>",
-                         track_if: "<track_if>",
-                         accept_mode: "<accept_mode>",
-                         switch_back_delay: "<switch_back_delay>",
-                         v2_compt: "<v2_compt>",
-                       }
-           }'
+  desc 'Manage Vrrp on Lenovo CNOS Switches.'
   apply_to_device
   ensurable
 
