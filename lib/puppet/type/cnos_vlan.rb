@@ -10,14 +10,7 @@
 # WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
 Puppet::Type.newtype(:cnos_vlan) do
-  desc ' = {
-            Manage Vlans on Lenovo cnos.
-            Example:
-             cnos_vlan {1:
-                     vlan_name => vlan1,
-                     admin_state => up,
-              }
-           }'
+  desc 'Manage Vlans on Lenovo CNOS Switches.'
   apply_to_device
   ensurable
 
