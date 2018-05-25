@@ -1,6 +1,6 @@
 # CNOS BST Track example
 
-cnos_telemetry_track{'bst_track':
+cnos_telemetry_track{ 'bst_track' :
   track_egress_port_service_pool    =>  0,
   track_egress_uc_queue             =>  0,
   track_egress_rqe_queue            =>  0,
