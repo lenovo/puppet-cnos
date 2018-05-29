@@ -1,3 +1,8 @@
+## 2018-05-29 Release 1.1.0
+
+### Summary
+Preparation of partner approved release.
+
 ## 2018-05-04 Release 1.0.0
 
 ### Summary
