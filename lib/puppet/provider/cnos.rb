@@ -141,7 +141,7 @@ class Puppet::Provider::Cnos < Puppet::Provider
 
   # VLAG Methods start here
   def self.fetch_all_vlag
-    resp = Vlag.fetch_all_vlag(connection)
+    resp = Vlag.get_all_vlag(connection)
     resp
   end
 
