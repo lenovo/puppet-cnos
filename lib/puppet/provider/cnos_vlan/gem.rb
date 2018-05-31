@@ -20,7 +20,7 @@ Puppet::Type.type(:cnos_vlan).provide(:gem, parent: Puppet::Provider::Cnos) do
 
   def self.instances
     instances = []
-    vlans = Puppet::Provider::Cnos.call_items('/nos/api/cfg/vlan')
+    vlans = Puppet::Provider::Cnos.fetch_all_vlan()
     return [] if vlans.nil?
     vlans.each do |item|
       Puppet.debug('Vlan Id is ' + item['vlan_id'].to_s)
