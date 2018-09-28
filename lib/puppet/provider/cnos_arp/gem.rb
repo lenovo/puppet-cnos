@@ -25,7 +25,8 @@ Puppet::Type.type(:cnos_arp).provide(:gem, parent: Puppet::Provider::Cnos) do
   end
 
   def exists?
-    @property_hash[:ensure].should be == :present
+    # @property_hash[:ensure].should be == :present
+    @property_hash[:ensure] == :present
     # return true since resource is always present
     true
   end
