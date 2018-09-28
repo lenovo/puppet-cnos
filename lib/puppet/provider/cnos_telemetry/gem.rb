@@ -52,7 +52,6 @@ Puppet::Type.type(:cnos_telemetry).provide(:gem, parent: Puppet::Provider::Cnos)
   end
 
   def params_setup
-    # params = {}
     params =
       {
         'collection-interval'         => resource[:collection_interval],
@@ -68,8 +67,7 @@ Puppet::Type.type(:cnos_telemetry).provide(:gem, parent: Puppet::Provider::Cnos)
 
   def exists?
     Puppet.debug('I am inside exists')
-    # @property_hash[:ensure] == :present
-    @property_hash[:ensure].should be == :present
+    @property_hash[:ensure] == :present
     true
   end
 
@@ -77,7 +75,6 @@ Puppet::Type.type(:cnos_telemetry).provide(:gem, parent: Puppet::Provider::Cnos)
     Puppet.debug('I am inside flush')
     puts @property_hash
     if @property_hash
-      puts 'hello'
       params = params_setup
       Puppet::Provider::Cnos.config_bst_feature(params)
     end
@@ -86,7 +83,6 @@ Puppet::Type.type(:cnos_telemetry).provide(:gem, parent: Puppet::Provider::Cnos)
 
   def destroy
     Puppet.debug('I am inside destroy')
-    # params = {}
     params =
       {
         'collection-interval'         => 60,
