@@ -67,8 +67,7 @@ Puppet::Type.type(:cnos_vlag_conf).provide(:gem, parent: Puppet::Provider::Cnos)
 
   def exists?
     Puppet.debug('I am inside exists')
-    # @property_hash[:ensure] == :present
-    @property_hash[:ensure].should be == :present
+    @property_hash[:ensure] == :present
     true
   end
 
