@@ -15,11 +15,9 @@
 #   include cnos_vlag_isl
 #
 # @param [String] feature_name Its defined as vlag_isl.
-# @property [Integer] msg_interval The interval with which heartbeat messages sent.
 # @property [Integer] port_aggregator LAG identifier; an integer from 1-4096.
 
 class cnos::vlag_isl (
-  Integer $msg_interval,
   Integer $port_aggregator,
   String $feature_name = $title,
   Enum['present', 'absent'] $ensure  = 'present',
@@ -27,6 +25,5 @@ class cnos::vlag_isl (
   cnos_vlag_isl { $feature_name :
     ensure          => $ensure,
     port_aggregator => $port_aggregator,
-    msg_interval    => $msg_interval,
   }
 }
