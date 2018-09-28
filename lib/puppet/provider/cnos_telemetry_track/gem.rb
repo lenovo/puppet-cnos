@@ -149,14 +149,12 @@ Puppet::Type.type(:cnos_telemetry_track).provide(:gem, parent: Puppet::Provider:
 
   def exists?
     Puppet.debug('I am inside exists')
-    # @property_hash[:ensure] == :present
-    @property_hash[:ensure].should be == :present
+    @property_hash[:ensure] == :present
     true
   end
 
   def destroy
     Puppet.debug('I am inside destroy')
-    # params = {}
     params =
       {
         'track-egress-port-service-pool'    => 1,
