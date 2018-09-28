@@ -64,8 +64,8 @@ Puppet::Type.type(:cnos_vlan).provide(:gem, parent: Puppet::Provider::Cnos) do
 
   def create
     Puppet.notice('I am inside create')
-    params = { 'vlan_id' => resource[:name].to_i,
-               'vlan_name' => resource[:vlan_name],
+    params = { 'vlan_id'     => resource[:vlan_id],
+               'vlan_name'   => resource[:vlan_name],
                'admin_state' => resource[:admin_state] }
     Puppet::Provider::Cnos.create_vlan(params)
     @property_hash.clear
