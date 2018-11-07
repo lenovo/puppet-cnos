@@ -49,7 +49,7 @@ Puppet::Type.type(:cnos_vrrp).provide(:gem, parent: Puppet::Provider::Cnos) do
     resources.keys.each do |name|
       Puppet.debug('prefetch vrrps ' + vrrps.first.to_s)
       if (provider = vrrps.find { |vrrp| vrrp.name == name })
-        Puppet.debug('prefetch vrrp ' + vlans.first.to_s)
+        Puppet.debug('prefetch vrrp ' + vrrps.first.to_s)
         resources[name].provider = provider
       end
     end
