@@ -47,7 +47,7 @@ Puppet::Type.newtype(:cnos_vrrp) do
 
     validate do |value|
       super value
-      raise('the name must be string representation of interface name') if value.size > 11
+      raise('the name must be string representation of IP Address') if value.size > 15
     end
   end
 
