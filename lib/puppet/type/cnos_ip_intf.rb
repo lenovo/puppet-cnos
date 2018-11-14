@@ -69,7 +69,7 @@ Puppet::Type.newtype(:cnos_ip_intf) do
 
     validate do |value|
       super value
-      raise('the name must be string representation of ip address') if value.size > 11
+      raise('the name must be string representation of ip address') if value.size > 15
     end
   end
 
