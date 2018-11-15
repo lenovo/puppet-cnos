@@ -50,7 +50,7 @@ Puppet::Type.type(:cnos_vlan_intf).provide(:gem, parent: Puppet::Provider::Cnos)
 
   def exists?
     Puppet.debug('I am inside exists')
-    @property_hash[:ensure] == :present
+    @property_hash[:ensure].should eq(:present)
     # return true since resource is always present
     true
   end
