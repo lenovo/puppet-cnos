@@ -28,7 +28,7 @@ Puppet::Type.newtype(:cnos_telemetry_track) do
     munge(&:to_i)
 
     validate do |value|
-      raise 'value either 0 or 1' unless value.to_i == 0 or value.to_i == 1
+      raise 'value either 0 or 1' unless value.to_i.zero? || value.to_i == 1
     end
   end
 
@@ -38,7 +38,7 @@ Puppet::Type.newtype(:cnos_telemetry_track) do
     munge(&:to_i)
 
     validate do |value|
-      raise 'value either 0 or 1' unless value.to_i == 0 or value.to_i == 1
+      raise 'value either 0 or 1' unless value.to_i.zero? || value.to_i == 1
     end
   end
 
@@ -48,7 +48,7 @@ Puppet::Type.newtype(:cnos_telemetry_track) do
     munge(&:to_i)
 
     validate do |value|
-      raise 'value either 0 or 1' unless value.to_i == 0 or value.to_i == 1
+      raise 'value either 0 or 1' unless value.to_i.zero? || value.to_i == 1
     end
   end
 
@@ -58,7 +58,7 @@ Puppet::Type.newtype(:cnos_telemetry_track) do
     munge(&:to_i)
 
     validate do |value|
-      raise 'value either 0 or 1' unless value.to_i == 0 or value.to_i == 1
+      raise 'value either 0 or 1' unless value.to_i.zero? || value.to_i == 1
     end
   end
 
@@ -68,7 +68,7 @@ Puppet::Type.newtype(:cnos_telemetry_track) do
     munge(&:to_i)
 
     validate do |value|
-      raise 'value either 0 or 1' unless value.to_i == 0 or value.to_i == 1
+      raise 'value either 0 or 1' unless value.to_i.zero? || value.to_i == 1
     end
   end
 
@@ -78,7 +78,7 @@ Puppet::Type.newtype(:cnos_telemetry_track) do
     munge(&:to_i)
 
     validate do |value|
-      raise 'value either 0 or 1' unless value.to_i == 0 or value.to_i == 1
+      raise 'value either 0 or 1' unless value.to_i.zero? || value.to_i == 1
     end
   end
 
@@ -88,7 +88,7 @@ Puppet::Type.newtype(:cnos_telemetry_track) do
     munge(&:to_i)
 
     validate do |value|
-      raise 'value either 0 or 1' unless value.to_i == 0 or value.to_i == 1
+      raise 'value either 0 or 1' unless value.to_i.zero? || value.to_i == 1
     end
   end
 
@@ -98,7 +98,7 @@ Puppet::Type.newtype(:cnos_telemetry_track) do
     munge(&:to_i)
 
     validate do |value|
-      raise 'value either 0 or 1' unless value.to_i == 0 or value.to_i == 1
+      raise 'value either 0 or 1' unless value.to_i.zero? || value.to_i == 1
     end
   end
 
@@ -108,7 +108,7 @@ Puppet::Type.newtype(:cnos_telemetry_track) do
     munge(&:to_i)
 
     validate do |value|
-      raise 'value either 0 or 1' unless value.to_i == 0 or value.to_i == 1
+      raise 'value either 0 or 1' unless value.to_i.zero? || value.to_i == 1
     end
   end
 
@@ -118,7 +118,7 @@ Puppet::Type.newtype(:cnos_telemetry_track) do
     munge(&:to_i)
 
     validate do |value|
-      raise 'value either 0 or 1' unless value.to_i == 0 or value.to_i == 1
+      raise 'value either 0 or 1' unless value.to_i.zero? || value.to_i == 1
     end
   end
 
@@ -128,7 +128,7 @@ Puppet::Type.newtype(:cnos_telemetry_track) do
     munge(&:to_i)
 
     validate do |value|
-      raise 'value either 0 or 1' unless value.to_i == 0 or value.to_i == 1
+      raise 'value either 0 or 1' unless value.to_i.zero? || value.to_i == 1
     end
   end
 end
