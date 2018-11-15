@@ -26,8 +26,7 @@ Puppet::Type.type(:cnos_arp_sys).provide(:gem, parent: Puppet::Provider::Cnos) d
 
   def exists?
     Puppet.debug('I am inside exists')
-    # @property_hash[:ensure].should be == :present
-    @property_hash[:ensure] == :present
+    @property_hash[:ensure].should eq(:present)
     # return true since resource is always present
     true
   end
