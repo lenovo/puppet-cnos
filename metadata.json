@@ -13,7 +13,6 @@
 			"version_requirement": ">= 4.13.1 < 5.0.0"
 		}
 	],
-	"data_provider": null,
 	"requirements": [
 		{
 			"name": "puppet",
@@ -29,7 +28,10 @@
 				"10.3.X",
 				"10.4.X",
 				"10.5.X",
-				"10.6.X"
+				"10.6.X",
+				"10.7.X",
+				"10.8.X",
+				"10.9.X"
 			]
 		}
 	],
@@ -38,7 +40,7 @@
 		"cnos",
 		"network"
 	],
-	"pdk-version": "1.3.1",
+	"pdk-version": "1.7.1",
 	"template-url": "file://C:/PROGRA~1/PUPPET~1/DevelopmentKit/share/cache/pdk-templates.git",
-	"template-ref": "1.3.0-0-g632fa63"
+	"template-ref": "1.7.1-0-g810b982"
 }
