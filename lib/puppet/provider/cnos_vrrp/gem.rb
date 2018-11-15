@@ -89,7 +89,6 @@ Puppet::Type.type(:cnos_vrrp).provide(:gem, parent: Puppet::Provider::Cnos) do
   def create
     Puppet.debug('I am inside create')
     params = params_setup
-    params = params_setup
     Puppet::Provider::Cnos.create_vrrp_intf(resource[:if_name], params)
     @property_hash.clear
   end
