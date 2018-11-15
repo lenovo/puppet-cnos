@@ -59,8 +59,13 @@ Puppet::Type.type(:cnos_vlag).provide(:gem, parent: Puppet::Provider::Cnos) do
   def flush
     if @property_hash
       Puppet.debug('I am inside flush')
-      params = params_setup
-      Puppet::Provider::Cnos.update_vlag_inst(resource[:inst_id], params)
+      # params = params_setup
+      # Puppet::Provider::Cnos.update_vlag_inst(resource[:inst_id], params)
+      Puppet::Provider::Cnos.delete_vlag_inst(resource[:inst_id].to_i)
+      params = { 'inst_id' => resource[:inst_id].to_i,
+               'port_aggregator' => resource[:port_aggregator],
+               'status' => resource[:status] }
+      Puppet::Provider::Cnos.create_vlag_inst(params)
     end
     @property_hash = resource.to_hash
   end
