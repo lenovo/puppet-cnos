@@ -149,7 +149,8 @@ Puppet::Type.type(:cnos_telemetry_track).provide(:gem, parent: Puppet::Provider:
 
   def exists?
     Puppet.debug('I am inside exists')
-    @property_hash[:ensure].should eq(:present)
+    @property_hash[:ensure] == :present
+    # @property_hash[:ensure].should eq(:present)
     true
   end
 
