@@ -1,3 +1,8 @@
+## 2018-12-03 Release 1.2.0
+
+### Summary
+Tested on Web Interface of pupet server for the module and the bugs came up has been fixed.
+
 ## 2018-05-29 Release 1.1.0
 
 ### Summary
