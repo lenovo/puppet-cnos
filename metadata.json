@@ -1,6 +1,6 @@
 {
 	"name": "lenovo-cnos",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"author": "lenovo",
 	"summary": "Module to manage and configure Lenovo CNOS devices",
 	"license": "BSD-3-Clause",
